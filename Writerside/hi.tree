@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="hi"
+                  name="互联网概念"
+                  start-page="Home-page.md">
+    <toc-element topic="Home-page.md"/>
+    <toc-element toc-title="数据库">
+        <toc-element topic="Database-concept.md"/>
+        <toc-element topic="oracle.md"/>
+        <toc-element topic="mysql.md"/>
+        <toc-element topic="sql-tutorial.md"/>
+        <toc-element topic="Database-optimization.md"/>
+        <toc-element topic="Database-lock.md"/>
+        <toc-element topic="mongodb.md"/>
+        <toc-element topic="redis.md"/>
+        <toc-element topic="redis-apply.md"/>
+        <toc-element topic="student-question.md"/>
+    </toc-element>
+
+    <toc-element toc-title="Java">
+        <toc-element topic="java-base.md"/>
+        <toc-element topic="java-keywords.md"/>
+        <toc-element topic="java-character.md"/>
+        <toc-element topic="java-string.md"/>
+        <toc-element topic="java-set.md"/>
+        <toc-element topic="map.md"/>
+        <toc-element topic="oop.md"/>
+        <toc-element topic="java-object.md"/>
+        <toc-element topic="java-class.md"/>
+        <toc-element topic="java-interface.md"/>
+        <toc-element topic="java-method.md"/>
+        <toc-element topic="jvm.md"/>
+    </toc-element>
+
+    <toc-element toc-title="Java框架">
+        <toc-element topic="SpringModule.md"/>
+        <toc-element topic="SpringCloudGateway.md"/>
+        <toc-element topic="ch26.md"/>
+        <toc-element topic="solr.md"/>
+        <toc-element topic="struts.md"/>
+        <toc-element topic="SpringAOP.md"/>
+        <toc-element topic="ch32.md"/>
+        <toc-element topic="ch33.md"/>
+        <toc-element topic="ch27.md"/>
+        <toc-element topic="ch37.md"/>
+        <toc-element topic="SpringAnnotation.md"/>
+        <toc-element topic="jsp.md"/>
+        <toc-element topic="SpringIOC.md"/>
+        <toc-element topic="ch35.md"/>
+        <toc-element topic="SpringBean.md"/>
+        <toc-element topic="ch31.md"/>
+        <toc-element topic="SpringBoot.md"/>
+        <toc-element topic="springMVC.md"/>
+        <toc-element topic="spring.md"/>
+        <toc-element topic="SpringTransaction.md"/>
+        <toc-element topic="Interceptor.md"/>
+    </toc-element>
+
+    <toc-element toc-title="微服务">
+        <toc-element topic="nacos.md"/>
+    </toc-element>
+
+    <toc-element toc-title="ORM">
+        <toc-element topic="Orm-Jdbc.md"/>
+        <toc-element topic="mybatis.md"/>
+        <toc-element topic="Mybatis-cache.md"/>
+        <toc-element topic="Hibernate.md"/>
+    </toc-element>
+
+    <toc-element toc-title="并发">
+        <toc-element topic="ch121.md"/>
+        <toc-element topic="ch125.md"/>
+        <toc-element topic="ch124.md"/>
+        <toc-element topic="ch120.md"/>
+        <toc-element topic="processAndThread.md"/>
+        <toc-element topic="ch127.md"/>
+        <toc-element topic="ch122.md"/>
+        <toc-element topic="ch126.md"/>
+    </toc-element>
+
+    <toc-element toc-title="其他">
+        <toc-element topic="ch150.md"/>
+        <toc-element topic="regex.md"/>
+        <toc-element topic="rpc.md"/>
+        <toc-element topic="authorization.md"/>
+    </toc-element>
+
+    <toc-element toc-title="设计模式">
+        <toc-element topic="FactoryPattern.md"/>
+        <toc-element topic="ProxyPattern.md"/>
+        <toc-element topic="SingletonPattern.md"/>
+    </toc-element>
+
+    <toc-element toc-title="算法">
+        <toc-element topic="data-structure.md"/>
+        <toc-element topic="Compose.md"/>
+        <toc-element topic="Sort.md"/>
+        <toc-element topic="Algebra.md"/>
+        <toc-element topic="Set.md"/>
+        <toc-element topic="AbsoluteValue.md"/>
+        <toc-element topic="arrange.md"/>
+    </toc-element>
+
+    <toc-element toc-title="代码">
+        <toc-element topic="java-code.md"/>
+        <toc-element topic="guoxiu-code.md"/>
+    </toc-element>
+
+    <toc-element toc-title="Python">
+        <toc-element topic="Python.md"/>
+    </toc-element>
+
+    <toc-element toc-title="前端">
+        <toc-element topic="Html.md"/>
+        <toc-element topic="bootstrap.md"/>
+        <toc-element topic="ch52.md"/>
+        <toc-element topic="javaScript.md"/>
+        <toc-element topic="jquery.md"/>
+        <toc-element topic="ch54.md"/>
+    </toc-element>
+
+    <toc-element toc-title="运维">
+        <toc-element topic="linux.md"/>
+        <toc-element topic="mac-install.md"/>
+        <toc-element topic="docker-install.md"/>
+        <toc-element topic="node.md"/>
+        <toc-element topic="mongodb-install.md"/>
+    </toc-element>
+
+    <toc-element toc-title="工具">
+        <toc-element topic="Idea.md"/>
+        <toc-element topic="Nginx.md"/>
+        <toc-element topic="Tomcat.md"/>
+        <toc-element topic="Git.md"/>
+        <toc-element topic="maven.md"/>
+        <toc-element topic="Rabbitmq.md"/>
+    </toc-element>
+
+    <toc-element toc-title="面试">
+        <toc-element topic="hr.md"/>
+        <toc-element topic="Interview-skills.md"/>
+        <toc-element topic="Java-exercise.md"/>
+    </toc-element>
+
+</instance-profile>

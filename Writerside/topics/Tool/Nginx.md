@@ -1,0 +1,11 @@
+# Nginx
+
+
+## nginx+tomcat集群配置，如何解决session共享问题
+首先开启每个tomcat的集群策略，在每个tomcat的service.xml中添加Cluster标签，然后在Engine标签里配置上jvmRoute，每台tomcat的jvmRoute配置的名称要一样，这样也就解决了session共享的问题了，nginx的话打开我们的nginx.conf配置文件，在里边配置集群的负载策略，nginx里边支持轮询、权重、ip_hash等策略，由于我门的服务器在硬件配置上一样，所以我们采了ip_hash策略，ip_hash 也就是说一个用户第一次访问nginx，nginx会将第一分发的请求服务器ip地址记录下来，下次访问的时候，发现之前有过访问，就会将第二次的访问还分发到第一次访问的服务器上。如果刚好分发的服务器宕机了，nginx就会自动给你分配到一个新的服务器上。
+1. Tomcat中配jvmRote，jvmRoute配置的名称要一样
+2. 不使用session，换用cookie
+3. session存在数据库（MySQL等）中
+4. session存在memcache或者redis中
+5. nginx中的ip_hash技术能够将某个ip的请求定向到同一台后端，这样一来这个ip下的某个客户端和某个后端就能建立起稳固的session
+
