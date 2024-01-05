@@ -13,7 +13,7 @@
 3. 随着Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。
 4. 是简单易学，完全面向对象，安全可靠，与平台无关（移植性好）的编程语言。
 
-## 什么jdk？
+## 什么是jdk？
 JDK(Java Development Kit Java开发工具包)。JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装了JDK，就不用在单独安装JRE了。其中的开发工具：编译工具(javac.exe) 打包工具(jar.exe)等
 
 ## 什么是jre？
