@@ -2,7 +2,7 @@
 
 1. mysql默认端口号是3306。
 
-## mysql函数 {id="mysql_1"}
+## mysql分页 {id="mysql_1"}
 
 ```sql
 # mysql分页
@@ -29,7 +29,7 @@ SELECT * FROM users LIMIT 10, 10;
 查看指定表结构：desc xxx  
 执行外部sql文件：source xxx
 
-## mysql什么是读写分离？ {id="mysql_3"}
+## 什么是mysql的读写分离？ {id="mysql_3"}
 MySQL的读写分离是一种数据库架构技术，通过将读操作和写操作分散到不同的服务器上，以提高数据库的整体性能和可扩展性。在这种架构中，主服务器负责处理事务性查询和写操作（INSERT、UPDATE、DELETE），而从服务器只负责处理读操作（SELECT）。主服务器将数据变更同步到从服务器，从而实现数据的一致性和备份。
 
 
