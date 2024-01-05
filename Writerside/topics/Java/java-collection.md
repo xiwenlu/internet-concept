@@ -1,4 +1,4 @@
-# java集合
+# java集合类
 
 <img src="collection.png" alt=""/>
 
@@ -8,17 +8,15 @@
 4. ArrayList的底层是由一个Object[]数组构成的，而这个Object[]数组，默认的长度是10。超过了默认长度以1.5倍扩容。
 5. ArrayList的size()方法，指的是“逻辑”长度。所谓“逻辑”长度，是指内存已存在的“实际元素的长度” 而“空元素不被计算”，因此取出来的是0。
 
-## 集合概述
-Collection 集合父接口
-### List
-有序集合接口,可以重复
-1. ArrayList 线程不安全,底层由数组实现,查询快,增删慢 
-2. LinkedList 线程不安全,底层由链表实现,查询慢,增删快
-3. Vector 线程安全
-### Set {id="set_1"}
-无序集合接口,不可以重复
-1. HashSet 底层由Hash码实现
-2. TreeSet 底层由二叉树实现,可以自动排序
+## java有集合类有哪些？
+数组是Java中最基础的集合类，主要用于存储固定大小的相同类型的数据。而集合则是一组对象的组合，这些对象可以是不同的类型和大小。
+1. List：用于存储一组有序的元素，并且允许有重复元素。常用实现类有ArrayList（数组）、LinkedList（链表）、Vector（线程安全）等。
+2. Set：用于存储一组不重复的元素。常用实现类有HashSet、TreeSet（二叉树）、LinkedHashSet等。
+3. Map：用于存储键值对，其中键是唯一的。常用实现类有HashMap、TreeMap、LinkedHashMap等。
+4. Queue：用于存储一组元素，并按照先进先出的原则进行访问。常用实现类有LinkedList、PriorityQueue等。
+5. Deque：用于存储一组元素，并支持在两端进行添加和删除操作。常用实现类有LinkedList、ArrayDeque等。
+6. SortedMap和SortedSet：用于存储键值对或元素，并按照一定的顺序进行排序。常用实现类有TreeMap、TreeSet等。
+7. Collection：是所有集合类的根接口，用于定义集合的基本操作。
 
 ## 什么是Collection？
 Collection是Java中的集合框架。它是一种统一处理集合的泛型接口，可以用于处理对象的存储和访问。  
@@ -79,52 +77,3 @@ Java中的TreeSet是一个基于树结构的Set集合，它继承自AbstractSet�
 |      null      |             允许             |       不允许       |
 | 插入、删除、查找的时间复杂度 |            O(1)            |    O(log n)     |
 
-## list常用方法 {id="list_method"}
-```Java
-
-List list = new LinkedList();
-//泛型的用法 List<数据类型> list = new LinkedList<数据类型>();
-
-list.add("万薪就业");       // 往集合中添加数据
-list.add(0,"金科教育");     // 往下标0的位置插入数据
-list.remove(0);             // 删除下标为0的元素
-list.remove("金科教育");    // 删除元素为'金科教育'的元素
-list.clear();               // 清空集合中的数据
-list.size();                // 获取集合中元素的长度
-list.get(0);                // 获取下标为0的元素
-list.iterator();            // 获得迭代器,可以通过迭代器遍历集合中的元素
-
-//List集合的两种遍历方法
-//迭代器遍历
-Iterator iterator = list.iterator();    // 拿到迭代器
-while(iterator.hasNext()){              // 判断是否存在下一个元素
-    //如果有下一个元素,通过next()方法拿到这个元素
-    Object object = iterator.next();
-    System.out.println(object);
-}
-
-//通过下标循环遍历
-for(int i=0;i<list.size();i++){
-    System.out.println(list.get(i));
-}
-
-```
-
-
-## set常用方法
-```Java
-Set set = new HashSet();
-set.add("金科教育");         // 往集合中添加数据,如果有重复的将添加不进去,对象类型的参数,记得要重写equals方法才行
-set.remove("金科教育");      // 删除元素为'金科教育'的元素
-set.clear();                // 清空集合中的元素
-set.size();                 // 获得集合中元素的长度
-set.iterator();             // 获得迭代器,Set集合只能通过迭代器遍历集合中的元素
-
-//迭代遍历
-Iterator iterator = set.iterator(); // 拿到迭代器
-    while(iterator.hasNext()){      // 判断是否存在下一个元素
-    // 如果有下一个元素,通过next()方法拿到这个元素
-    Object object = iterator.next();
-    System.out.println(object);
-}
-```

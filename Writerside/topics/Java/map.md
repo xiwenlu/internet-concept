@@ -10,7 +10,6 @@
 ## hashmap的key出现hash冲突是如何解决的
 利用Entry类的next变量来实现链表，把最新的元素放到链表头，旧的数据则被最新的元素的next变量引用。      
 
-
 ## HashMap为什么线程不安全 {id="hashmap_2"}
 1. HashMap内部存储使用了一个Node数组(默认大小是16)，而Node类包含一个类型为Node的next的变量，也就是相当于一个链表，所有hash值相同(即产生了冲突)的key会存储到同一个链表里。
 2. HashMap在并发执行put操作时会引起死循环，导致CPU利用率接近100%。因为多线程会导致HashMap的Node链表形成环形数据结构，一旦形成环形数据结构，Node的next节点永远不为空，就会在获取Node时产生死循环。
@@ -60,38 +59,6 @@ Map的key和Set都有一个共同的特性就是集合的唯一性，TreeMap更�
 2. Hashtable的任何操作都会把整个表锁住，是阻塞的。好处是总能获取最实时的更新，比如说线程A调用putAll写入大量数据，期间线程B调用get，线程B就会被阻塞，直到线程A完成putAll，因此线程B肯定能获取到线程A写入的完整数据。坏处是所有调用都要排队，效率较低。
 3. ConcurrentHashMap锁的方式是稍微细粒度的。 ConcurrentHashMap将hash表分为16个桶（默认值），诸如get,put,remove等常用操作只锁当前需要用到的桶。原来只能一个线程进入，现在却能同时16个写线程进入（写线程才需要锁定，而读线程几乎不受限制），并发性的提升是显而易见的。
 4. ConcurrentHashMap 是设计为非阻塞的。在更新时会局部锁住某部分数据，但不会把整个表都锁住。同步读取操作则是完全非阻塞的。好处是在保证合理的同步前提下，效率很高。坏处是严格来说读取操作不能保证反映最近的更新。例如线程A调用putAll写入大量数据，期间线程B调用get，则只能get到目前为止已经顺利插入的部分数据。此外，使用默认构造器创建的ConcurrentHashMap比较占内存
-
-## map常用方法
-```Java
-
-map.put(key,value);     // 添加元素
-map.remove(key);        // 根据key的值删除键值对
-map.size();             // 获得存储元素的长度
-map.get(key);           // 通过key获得到value
-map.values();           // 获取到所有的value,以Collection对象返回
-map.keySet();           // 返回所有key的Set集合
-map.entrySet();         // 返回Entry的Set集合对象
-
-// 遍历方式1
-Set set = map.keySet();         // 获取到所有Key
-Iterator iter = set.iterator(); // 拿到迭代器
-while(iter.next()){             // 判断是否有下一个元素
-    Object key = iter.next();   // 拿到下一个元素,也就是key
-    // 有了key就可以调用get方法,根据key拿到对应的值了
-    System.out.println("key:" + key = ",value:" + map.get(key));
-}
-
-//遍历方式2
-Set entrySet = map.entrySet();  // 拿到所有的Entry对象集合
-Iterator it = entrySet.iterator();
-while(it.hasNext()){
-    Entry entry = (Entry)it.next();
-    // 通过entry对象的getKey和getValue方法分别拿到key-value值
-    System.out.println("key:" + entry.getKey() + " value:" + entry.getValue());
-}
-
-```
-
 
 
 

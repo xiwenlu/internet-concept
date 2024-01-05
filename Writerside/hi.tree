@@ -24,7 +24,7 @@
         <toc-element topic="java-keywords.md"/>
         <toc-element topic="java-character.md"/>
         <toc-element topic="java-string.md"/>
-        <toc-element topic="java-set.md"/>
+        <toc-element topic="java-collection.md"/>
         <toc-element topic="map.md"/>
         <toc-element topic="oop.md"/>
         <toc-element topic="java-object.md"/>
