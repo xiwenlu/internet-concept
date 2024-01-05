@@ -23,6 +23,7 @@
         <toc-element topic="oop.md"/>
         <toc-element topic="java-overview.md"/>
         <toc-element topic="jvm.md"/>
+        <toc-element topic="java-variables.md"/>
         <toc-element topic="java-character.md"/>
         <toc-element topic="java-datatype.md"/>
         <toc-element topic="java-keywords.md"/>
@@ -50,7 +51,7 @@
         <toc-element topic="SpringAnnotation.md"/>
         <toc-element topic="jsp.md"/>
         <toc-element topic="SpringIOC.md"/>
-        <toc-element topic="ch35.md"/>
+        <toc-element topic="junit.md"/>
         <toc-element topic="SpringBean.md"/>
         <toc-element topic="ch31.md"/>
         <toc-element topic="SpringBoot.md"/>
