@@ -1,4 +1,4 @@
-# map
+# map集合
 
 1. HashTable源码中是使用synchronized来保证线程安全的
 
