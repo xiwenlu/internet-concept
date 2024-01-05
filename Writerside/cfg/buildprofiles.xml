@@ -1,11 +1,17 @@
 <buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <variables>
+        <download-title>GitHub</download-title>
+        <download-page>https://github.com/xiwenlu/demo-wt</download-page>
+        <showDownloadButton>true</showDownloadButton>
 
+        <algolia-id>LW3SL1EHH1</algolia-id>
+        <algolia-index>internet-concept</algolia-index>
+        <algolia-api-key>cf9494b93fccc53c5737a5d544790d2b</algolia-api-key>
+        <web-root>https://some.domain</web-root>
     </variables>
     <build-profile instance="instance_id"/>
     <footer>
-        <copyright>Product 2000-2024</copyright>
-        <icp>京ICP备2020045928号-2</icp>
+        <social type="email" href="896465619@qq.com">Send us an email</social>
     </footer>
 </buildprofiles>
