@@ -2,7 +2,7 @@
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <variables>
         <download-title>GitHub</download-title>
-        <download-page>https://github.com/xiwenlu/demo-wt</download-page>
+        <download-page>https://github.com/xiwenlu/internet-concept</download-page>
         <showDownloadButton>true</showDownloadButton>
 
         <algolia-id>LW3SL1EHH1</algolia-id>

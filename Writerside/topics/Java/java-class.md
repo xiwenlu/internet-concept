@@ -1,49 +1,40 @@
 # java类
 
-## 类的组成
-由成员变量(属性)和成员方法组成，并且成员方法不需要static修饰
+## java有哪些常用的类 {id="java_common"}
+Java是一种广泛使用的编程语言，它提供了许多内置的类，这些类可以用于各种不同的任务和应用程序。
+1. String类：String类是Java中最重要的类之一，它表示字符串。
+2. System类：System类包含了一些有用的静态变量和常量，以及一些有用的方法，如输入/输出操作和控制台输入。
+3. Math类：Math类包含了一些用于数学运算的静态方法和常量。
+4. List接口和ArrayList、LinkedList类：List是一个接口，ArrayList和LinkedList是实现这个接口的常用类。它们都用于存储和操作有序的元素集合。
+5. Set接口和HashSet、LinkedHashSet、TreeSet类：Set是一个接口，HashSet、LinkedHashSet和TreeSet是实现这个接口的常用类。它们都用于存储和操作无序的元素集合。
+6. Map接口和HashMap、LinkedHashMap、TreeMap类：Map是一个接口，HashMap、LinkedHashMap和TreeMap是实现这个接口的常用类。它们都用于存储和操作键值对映射。
+7. File类：File类用于表示文件路径名和文件操作。
+8. Date类和LocalDate、LocalTime、LocalDateTime类：Date类是用于表示特定时间点的类，而LocalDate、LocalTime和LocalDateTime类是用于表示日期和时间的类。
+9. Random类：Random类用于生成伪随机数。
+10. Scanner类：Scanner类用于从各种输入源（如键盘）读取原始数据。
+这只是Java中常用类的一部分，还有许多其他的类可以用于各种不同的任务和应用程序。
 
-## java.lang.Math数学类
-用来进行一些数学中的操作。该类为工具类,不需要创建对象,直接通过类名.方法名调用。
-```Java
-Math.abs(值);        //求值得绝对值
-Math.max(值1,值2);    //比较两个值中较大的并返回
-Math.min(值1,值2)     //比较两个值中较小的并返回
-Math.random();      //返回一个0.0-1.0之间的随机数(不包括1.0),类型是double类型的
-```
+## java类的组成 {id="java_compose"}
+1. 属性（成员变量）：属性用于存储对象的状态，也就是对象的数据。在类中，使用private关键字声明属性，然后在get和set方法中访问和修改这些属性。
+2. 构造方法：构造方法是一种特殊的方法，用于创建并初始化对象。构造方法的名称必须与类名完全相同，且没有返回类型。
+3. 方法（成员方法）：方法用于定义对象的行为。方法可以访问和修改对象的属性。
+4. 块（Block）：块是一种特殊的代码结构，它可以包含在类定义中，并且在类加载时执行。常见的块包括静态块和实例化块。
+5. 内部类：内部类是定义在另一个类中的类。Java支持三种类型的内部类：成员类、静态内部类和局部内部类。
 
-## java.util.Random随机数
-```Java
-Random r = new Random();// 调用无参构造函数创建对象
-r.nextInt();            // 获得一个int取值范围内的随机数
-r.nextInt(10);          // 获得一个0-9的随机数,不包括10
-r.nextInt(6)+5;         // 获得一个5-10的随机数
+## 什么是java内部类？ {id="java_inner"}
+Java中的内部类是一种特殊的类，它被定义在另一个类的内部。根据其作用域，Java中的内部类可以分为四种：
+1. 静态内部类（Static Nested Class）：这种内部类与外部类是独立的，不需要创建外部类的实例就可以创建内部类的实例。静态内部类可以访问外部类的静态成员。
+2. 实例内部类（Instance Nested Class）：这种内部类必须依赖于外部类的一个实例来创建。创建实例内部类的对象时，必须先创建外部类的对象。实例内部类可以访问外部类的所有成员，包括私有成员。
+3. 局部内部类（Local Inner Class）：这种内部类定义在方法中，与方法的变量一样只有局部的作用域。局部内部类可以访问该方法的变量。
+4. 匿名内部类（Anonymous Inner Class）：这种内部类没有名字，只能用于实现接口或者继承抽象类。匿名内部类可以继承一个已有类或实现一个接口，也可以不。
 
-```
+## 什么是java的抽象类？ {id="java_abstract"}
+抽象类通常用于定义软件的抽象概念，如形状、动物等，这些概念可以有多种具体的实现方式。通过使用抽象类，我们可以定义这些概念共有的属性和行为，然后在子类中提供具体的实现。
 
-## java.util.Date日期对象
-```Java
-Date date = new Date();//调用无参构造创建对象
-//常用方法
-date.getYear();//获得年,返回的是当前年数-1900的数值,如:今年是2016年,
-则返回的是2016-1900,也就是116
-date.getMonth();//获得月,返回的是0-11,0代表1月,11代表12月
-date.getDate();//获得日
-date.getDay();//获得市星期几,0-6,0表示星期天,1-6表示星期一到星期六
-date.getTime();//返回自1970年1月1日后的毫秒数
+### java抽象类的使用设计原则 {id="java_abstract_design"}
+抽象类是面向对象设计原则中的重要概念，它有助于实现代码的抽象和封装，提高代码的可维护性和可扩展性。
 
-```
-
-## java.text.SimpleDateFormat日期格式化
-```Java
-// 调用有参构造,传递的是要展示的日期的格式
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//常用方法
-sdf.format(date);//返回一个构造函数中指定了格式的字符串
-//根据构造函数中规定的格式传递一个字符串,返回一个Date对象
-sdf.parse("2017/08/08 23:59:59");
-
-```
+> 更多参阅：[接口和抽象类的区别？](java-interface.md#java-abstract_difference)
 
 
 ## java中子类和父类相关方法的执行顺序

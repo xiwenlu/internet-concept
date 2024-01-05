@@ -20,7 +20,7 @@
     </toc-element>
 
     <toc-element toc-title="Java">
-        <toc-element topic="java-base.md"/>
+        <toc-element topic="java-datatype.md"/>
         <toc-element topic="java-keywords.md"/>
         <toc-element topic="java-character.md"/>
         <toc-element topic="java-string.md"/>
