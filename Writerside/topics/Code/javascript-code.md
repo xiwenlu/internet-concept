@@ -1,4 +1,4 @@
-# ajax
+# javascript代码
 
 ## ajax代码
 ```javascript

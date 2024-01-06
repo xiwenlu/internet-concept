@@ -75,13 +75,12 @@
 
     <toc-element toc-title="并发">
         <toc-element topic="ch121.md"/>
-        <toc-element topic="ch125.md"/>
         <toc-element topic="ch124.md"/>
         <toc-element topic="ch120.md"/>
         <toc-element topic="processAndThread.md"/>
-        <toc-element topic="ch127.md"/>
+        <toc-element topic="poi.md"/>
         <toc-element topic="java-lock.md"/>
-        <toc-element topic="ch126.md"/>
+        <toc-element topic="distribution-lock.md"/>
     </toc-element>
 
     <toc-element toc-title="其他">
@@ -119,10 +118,9 @@
     <toc-element toc-title="前端">
         <toc-element topic="html.md"/>
         <toc-element topic="bootstrap.md"/>
-        <toc-element topic="ch52.md"/>
+        <toc-element topic="easyui.md"/>
         <toc-element topic="javaScript.md"/>
         <toc-element topic="jquery.md"/>
-        <toc-element topic="ch54.md"/>
     </toc-element>
 
     <toc-element toc-title="运维">
