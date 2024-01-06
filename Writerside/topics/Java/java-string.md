@@ -36,16 +36,6 @@ str1.toLowerCase();     // 将字符串中的英文全部转换成小写字母�
 | \\  |  反斜杠  |
 
 
-## StringBuilder和StringBuffer
-都是可变字符串类型,拼接效率远高于String的拼接
-1. StringBuilder 线程不安全
-2. StringBuffer 线程安全
-```Java
-sb.append("");//拼接字符串方法
-sb.toString();//返回拼接好的字符串
-
-```
-
 ## StringBuffer、StringBuilder和String区别
 
 <table border="1" cellpadding="1" cellspacing="1">
@@ -82,6 +72,12 @@ sb.toString();//返回拼接好的字符串
 1. 在单线程环境中，由于StringBuilder的非同步性，它的性能通常优于StringBuffer。
 2. 在多线程环境中，由于StringBuffer的同步性，它可能会引发性能问题，因为每次调用方法都需要等待锁。
 3. String因为是不可变的常量，每次赋值都会创建一个新的对象。StringBuffer和StringBuilder都是可变的，当进行字符串拼接时采用append方法，在原来的基础上进行追加，所以性能比String要高。
+
+---
+
+1. String 是一个不可变化的常量，连接效率低。
+2. StringBuffer 是一个可变的字符串类型，连接效率高于String 线程安全。
+3. StringBuilder是一个可变的字符串类型，连接效率高于String和StringBuffer 线程不安全的。
 
 
 ## 字符串创建了多少个对象？

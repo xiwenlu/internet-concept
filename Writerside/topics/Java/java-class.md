@@ -1,6 +1,6 @@
 # java类
 
-
+1. java中使用java.text.SimpleDateFormat类来格式化日期。format方法将日期类型转换为字符串，parse方法将String类型转化成日期类型。
 
 ## java有哪些常用的类 {id="java_common"}
 Java是一种广泛使用的编程语言，它提供了许多内置的类，这些类可以用于各种不同的任务和应用程序。
@@ -14,7 +14,8 @@ Java是一种广泛使用的编程语言，它提供了许多内置的类，这�
 8. Date类和LocalDate、LocalTime、LocalDateTime类：Date类是用于表示特定时间点的类，而LocalDate、LocalTime和LocalDateTime类是用于表示日期和时间的类。
 9. Random类：Random类用于生成伪随机数。
 10. Scanner类：Scanner类用于从各种输入源（如键盘）读取原始数据。
-这只是Java中常用类的一部分，还有许多其他的类可以用于各种不同的任务和应用程序。
+
+
 
 ## java类的组成 {id="java_compose"}
 1. 属性（成员变量）：属性用于存储对象的状态，也就是对象的数据。在类中，使用private关键字声明属性，然后在get和set方法中访问和修改这些属性。

@@ -50,17 +50,18 @@ onmouseout()    // 鼠标移出事件
 
 
 ## js中的内置对象 {id="js_3"}
-math对象
+
+### math数学类
 ```javascript
-ceil()  // 向上取整     
-floor() // 向下取整    
-abs()   // 绝对值   
-round() // 四舍五入    
-random() // 随机数
+ceil()      // 向上取整     
+floor()     // 向下取整    
+abs()       // 绝对值   
+round()     // 四舍五入    
+random()    // 随机数
 
 ```
                      
-string对象
+### string对象
 ```javascript
 concat()    // 将两个或多个字符串拼接在一起形成新的字符串       
 bold()      // 给字符串加粗        
