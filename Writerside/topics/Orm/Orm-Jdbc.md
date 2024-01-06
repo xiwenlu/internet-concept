@@ -21,8 +21,8 @@ ORM：对象关系映射（Object Relational Mapping，简称ORM，或O/RM，或
 2. 加载驱动为数据库连接做准备：Class.forName
 3. 连接数据库：DriverManger.getConnection
 4. 写sql语句
-5. 创建数据库操作对象：preparestatement
-6. 执行sql语句：executeupdate/executequery
+5. 创建数据库操作对象：prepareStatement
+6. 执行sql语句：executeUpdate/executeQuery
 7. 关闭连接释放资源：.close
 
 
@@ -36,3 +36,6 @@ ORM：对象关系映射（Object Relational Mapping，简称ORM，或O/RM，或
 4. 实现见状的持久化层需要高超的开发技巧，而且编程量很大
 5. 对象模型和关系模型的转换非常麻烦
 
+
+## 什么ORM? {id="orm_2"}
+ORM(Object Relation Mapping)对象关系映射。在java对象和关系型数据库之间建立起来的映射关系。ORM这种思想下的具体技术实现包括Hibernate、Ibatis和JPA。

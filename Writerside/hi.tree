@@ -70,7 +70,7 @@
         <toc-element topic="Orm-Jdbc.md"/>
         <toc-element topic="mybatis.md"/>
         <toc-element topic="Mybatis-cache.md"/>
-        <toc-element topic="Hibernate.md"/>
+        <toc-element topic="hibernate.md"/>
     </toc-element>
 
     <toc-element toc-title="并发">
@@ -80,7 +80,7 @@
         <toc-element topic="ch120.md"/>
         <toc-element topic="processAndThread.md"/>
         <toc-element topic="ch127.md"/>
-        <toc-element topic="ch122.md"/>
+        <toc-element topic="java-lock.md"/>
         <toc-element topic="ch126.md"/>
     </toc-element>
 

@@ -1,5 +1,28 @@
-// todo
+[//]: # (todo)
 
+## SSH框架的搭建步骤
+1. 创建web项目
+2. 导入ssh相应的jar包
+3. 创建包结构，面向接口
+4. 导入配置
+    + 在web.xml中添加Struts2的核心控制器和spring的监听
+    + 将struts.xml、hibernate.cfg.xml、applicationContext.xml配置文件放在src下
+    + 因为applicationContext.xml会加载解析hibernate.cfg.xml所以需要将hibernate.cfg.xml文件配置完整
+    + 将javabean.hbm.xml映射文件及相应的实体类配置好
+4. action类需要继承ActionSupport，action类中的方法必须是public修饰，返回值类型必须是string ，没有参数
+5. service接口注入到spring中由spring管理，此时action中需要私有化此service属性并生成get、set方法。
+6. dao 接口注入到spring中由spring管理，此时service需要私有化此dao属性并生成get、set方法，dao层需继承HibernateDaoSupport
+
+--- 
+
+1. 首先在web.xml中通过contextLoaderListener来融入spring并加载spring相关配置文件
+2. 同样配置struts2前端总控制器filterDispatcher来过滤相关的请求并加载struts.xml
+3. action继承ActionSupport 然后引入struts-spring-plugin.jar包并在配置文件中注入service 提供get set 方法
+4. 通过spring配置sessionFactory 读取hibernate.cfg.xml 数据库信息,这时hibernate.cfg.xml必须配置完全
+5. dao层继承HibernateDaoSupport 在spring配置文件中dao注入sessionFactory
+6. 在applicationContext.xml中通过byName自动注入service和dao
+
+---
 1. 首先导入SSH框架整合所需的jar包: Spring的jar包,Hibernate 的jar包,第三方jar包（日志包）,数据库的jar包
 
 <img src="hibernate-package.png" alt=""/>
@@ -190,35 +213,7 @@ public void testDataSource() throws SQLException {
    session.close();
 }
 ```
-
-## 文件上传注意事项
-1. 表单中必须添加属性enctype="multipart/form-data"
-2. action 中接收文件的属性有两个
-    + File 类型的属性接收文件实体
-    + String类型的文件名属性接收文件名信息
-    + 注意：接收文件名的属性名称是接收File实体的属性名称+FileName ;
-3. 数据库中存储的是上传后的路径
-4. 前台回显时是虚拟路径+数据库存储的文件路径
-5. 如果修改时不修改图片，只需要在action中判断file属性是否为空
-
-## jdbc和hibernate的区别
-hibernate是jdbc轻量级的封装,hibernate基于jdbc        
-jdbc
-1. jdbc是纯手工的(sql语句，对于结果集的解析)
-2. 执行效率高于hibernate，
-3. 使用的sql语句，
-4. jdbc是直接操作数据库中的表  select * from 表名
-
-hibernate
-1. hibernate是一个对JDBC进行轻量级封装的持久层框架
-2. hibernate是全自动的(将常用方法进行了封装，不用手动进行结果集的解析)
-3. hibernate是跨数据库的，
-4. hibernate的开发效率高于jdbc，
-5. hibernate使用的hql语句，
-6. 但是在最后操作数据库是hql语句会转化成sql语句去执行，
-7. hibernate操作的是对象from实体类名
-
-## Hibernate 多表联查的实现方式核心代码
+## Hibernate多表联查的实现方式核心代码
 hibernate很多实现都是靠喜欢配关系，但是如果两张表，数据量都非常大的时候，并不合适配关系。
 
 例如：student表和score表需要做联合查询。
