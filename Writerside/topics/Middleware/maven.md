@@ -1,4 +1,4 @@
-# maven
+# maven项目管理工具
 
 ## bootstrap.yml和application.yml区别
 

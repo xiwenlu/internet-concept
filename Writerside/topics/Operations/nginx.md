@@ -1,4 +1,4 @@
-# Nginx
+# nginx服务器
 
 
 ## nginx+tomcat集群配置，如何解决session共享问题

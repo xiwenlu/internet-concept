@@ -1,4 +1,4 @@
-# rabbitmq
+# rabbitmq消息队列
 
 ## Rabbitmq消息队列 {id="rabbitmq_1"}
 当初我们做短信发送的时候用到了rabbitmq消息队列，我们当时有一个短信发送平台，平台采用监听消息队列方式进行短信的发送，我们在项目中通过配置一个RebbitConfig在上面加@Configuration注解，然后在里边new一个Queue对象创建一个消息队列，然后我们再发送短信的地方注入AmqpTemplate,最后通过调用AmqpTemplate.convertAndSend将消息发送到队列当中，convertAndSend里边有两个参数，第一个是消息队列名称，第二个是消息队列发送进去的内容。短信发送平台通过RabbitListener queues等于队列名称，监听队列，通过RabbitHandler注解获取到消息队列中的数据，然后通过httpClient调用短信发送接口，将短信发送出去并将发送的数据以及发送状态记录到数据库中。

@@ -1,12 +1,9 @@
-# idea
+# idea开发工具
 
 ## 格式化插件 Save Actions
 
-1. 在idea的插件市场，搜索并安装
-<img src="SaveActions1.png" alt=""/>
-2. 打开Save Actions的设置界面   
-<img src="SaveActions2.png" alt=""/>
-3. 我们选择几个比较常用的功能
+1. 在idea的插件市场，搜索并安装Save Actions插件。
+2. 重启之后在Other Settings中打开Save Actions的设置界面，勾选以下几项。
    - activate save actions on save – 在保存的时候激活save actions
    - optimize imports – 自动删除没有引用的imports
    - reformat file – 自动格式化代码
