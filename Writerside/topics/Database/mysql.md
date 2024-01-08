@@ -73,3 +73,15 @@ MySQL的读写分离是一种数据库架构技术，通过将读操作和写操
 3. MyISAM不支持外键，InnoDB支持外键。
 
 总的来说，MyISAM和InnoDB各有优劣，各有各的使用环境，但是InnoDB的设计目标是用来处理大容量的数据库系统的，我个人觉得使用InnoDB可以应对更为复杂的情况，特别是对并发的处理要比MyISAM高效。
+
+
+## mysql中like查询为什么不区分大小写？
+在MySQL中，字符集latin1、utf8_general_ci和utf8mb4_general_ci在LIKE查询时不区分大小写的。在大型数据集上，不区分大小写的排序规则可能会影响查询性能。
+
+```sql
+# character_set_server对应的值就是mysql字符集
+SHOW VARIABLES LIKE 'character_set%';
+# 区分大小写
+select * from table_name where name  COLLATE utf8_bin like concat('%','FILE','%') ;
+
+```
