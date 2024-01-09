@@ -110,11 +110,37 @@ Docker Extensions是一个允许开发人员在Docker Desktop中构建新功能�
 ### Disk Usage扩展
 你可以立即了解Docker资源在计算机上使用了多少磁盘空间，并通过删除特定类型的资源（如停止的容器、悬挂的镜像和未使用的卷）来回收空间。
 
-## Tailscale扩展
+### Tailscale扩展
 Tailscale扩展允许你在Docker Desktop上完成这项工作。Tailscale私下几乎立即共享你的容器，而无需进行任何网络设置。它检测所有暴露端口的容器，并使其可供你的私人Tailscale网络中的人员使用。属于你的Tailscale网络的任何人都可以看到你的容器。
 
-## Logs Explorer扩展
+### Logs Explorer扩展
 Logs Explorer扩展提供了一个可以同时浏览正在运行和停止的容器中的日志、使用正则表达式对其进行过滤以及使用粘性搜索过滤器的地方。
 
-## Slim.AI扩展
+### Slim.AI扩展
 它使你能够深入了解本地镜像的组成，如文件系统、元数据、图层信息等。这有助于识别容器中的实用程序（例如，curl），并探索其中包含的任何基于文本的文件（如配置、shell脚本、REASME）。
+
+### docker extension命令
+```Shell
+(base) xiwenlu@xiwenludeMac-mini ~ % docker extension help
+Usage:  docker extension [OPTIONS] COMMAND
+
+Manages Docker extensions
+
+Options:
+      --socket string   The Desktop extension manager socket
+
+Management Commands:
+  dev             Extension development helpers
+
+Commands:
+  init            Create a new Docker Extension based on a template.
+  install         Install a Docker extension with the specified image
+  ls              List installed Docker extensions
+  rm              Remove a Docker extension
+  share           Generate a link to share the extension.
+  update          Remove and re-install a Docker extension
+  validate        Validate an extension image or metadata file
+  version         Print the client and server versions
+
+
+```
