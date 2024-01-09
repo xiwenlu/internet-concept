@@ -20,7 +20,22 @@ docker cp /home/docker/redis/conf/appendonly.aof redis:/data
 
 ```
 
-## elasticsearch
+## Dockerfile
+
+### 构建nodejs项目
+```
+FROM alpine:latest
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN apk add --no-cache --update nodejs nodejs-npm
+COPY . /home/www/express
+RUN cd /home/www/express && npm install --production
+WORKDIR /home/www/express
+EXPOSE 3000
+ENTRYPOINT ["npm", "run"]
+CMD ["start"]
+```
+
+## 安装elasticsearch
 ```Shell
 docker run --name elasticsearch -p 9200:9200  -p 9300:9300 \
 -e "discovery.type=single-node" \
@@ -39,13 +54,13 @@ docker run -d  --name elasticsearch-head -p 9100:9100 docker.io/mobz/elasticsear
 ```
 
 ## hadoop相关
-### spark安装
+### 安装spark
 ```Shell
 docker run -it --name my-spark -p 4040:4040 apache/spark /opt/spark/bin/spark-shell
 ```
 
 ## mq安装
-### rabbitmq安装
+### 安装rabbitmq
 
 ```Shell
 # -d 表示后台运行
@@ -77,7 +92,7 @@ docker restart my-rabbit
 访问：http://localhost:15672，输入创建好的账号密码登录
 
 
-### activemq安装
+### 安装activemq
 ```Shell
 docker run --name='activemq' \
             -itd \
@@ -89,17 +104,17 @@ docker run --name='activemq' \
             webcenter/activemq:latest
 ```
 
-## Dockerfile
+## 什么是Docker Extensions？
+Docker Extensions是一个允许开发人员在Docker Desktop中构建新功能、扩展现有功能并发现和集成其他工具的扩展系统。它通过使用第三方工具（如插件）来帮助开发人员扩展Docker的功能，从而提高工作效率和工作流的顺畅性。
 
-### 构建nodejs项目
-```
-FROM alpine:latest
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-RUN apk add --no-cache --update nodejs nodejs-npm
-COPY . /home/www/express
-RUN cd /home/www/express && npm install --production
-WORKDIR /home/www/express
-EXPOSE 3000
-ENTRYPOINT ["npm", "run"]
-CMD ["start"]
-```
+### Disk Usage扩展
+你可以立即了解Docker资源在计算机上使用了多少磁盘空间，并通过删除特定类型的资源（如停止的容器、悬挂的镜像和未使用的卷）来回收空间。
+
+## Tailscale扩展
+Tailscale扩展允许你在Docker Desktop上完成这项工作。Tailscale私下几乎立即共享你的容器，而无需进行任何网络设置。它检测所有暴露端口的容器，并使其可供你的私人Tailscale网络中的人员使用。属于你的Tailscale网络的任何人都可以看到你的容器。
+
+## Logs Explorer扩展
+Logs Explorer扩展提供了一个可以同时浏览正在运行和停止的容器中的日志、使用正则表达式对其进行过滤以及使用粘性搜索过滤器的地方。
+
+## Slim.AI扩展
+它使你能够深入了解本地镜像的组成，如文件系统、元数据、图层信息等。这有助于识别容器中的实用程序（例如，curl），并探索其中包含的任何基于文本的文件（如配置、shell脚本、REASME）。
