@@ -130,7 +130,7 @@
         <toc-element topic="nginx.md"/>
         <toc-element topic="tomcat.md"/>
         <toc-element topic="mac-install.md"/>
-        <toc-element topic="docker-install.md"/>
+        <toc-element topic="docker.md"/>
         <toc-element topic="node.md"/>
         <toc-element topic="mongodb-install.md"/>
     </toc-element>

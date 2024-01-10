@@ -1,6 +1,27 @@
 # docker
 
-## docker常用命令
+## 什么是Docker Extensions？
+
+Docker Extensions是一个允许开发人员在Docker Desktop中构建新功能、扩展现有功能并发现和集成其他工具的扩展系统。它通过使用第三方工具来帮助开发人员扩展Docker的功能，从而提高工作效率和工作流的顺畅性。
+
+### Disk Usage
+
+通过从Docker Desktop中删除未使用的对象来优化磁盘空间。
+
+### Tailscale
+
+Tailscale使您能够安全地连接到Docker容器，而不会将它们暴露在公共互联网上。
+
+### Logs Explorer
+
+在一个位置查看所有容器日志，以便更快地进行调试和故障排除。
+
+### Slim.AI
+
+Slim使您能够更快地创建安全容器。深入研究你的图像结构。知道你的容器里有什么。
+
+## docker命令
+
 ```Shell
 
 # 查看容器的ip
@@ -10,7 +31,7 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 docker logs -f --tail=100 921
 
 # 进入容器
-sudo docker exec -it 775c7c9ee1e1 /bin/bash  
+docker exec -it 775c7c9ee1e1 /bin/bash  
 
 # 从容器复制到宿主机
 docker cp redis:/data/appendonly.aof /home/docker/redis/conf
@@ -18,11 +39,35 @@ docker cp redis:/data/appendonly.aof /home/docker/redis/conf
 # 从宿主机复制到容器
 docker cp /home/docker/redis/conf/appendonly.aof redis:/data
 
+# 查看docker包含什么命令
+docker help
+
+# 查看docker extension 扩展包含什么命令
+docker extension help
+
 ```
+
+## Docker run命令常用参数
+
+|      参数       |              描述              |
+|:-------------:|:----------------------------:|
+| -d, --detach  |           在后台运行容器            |
+|    --name     |          为容器指定一个名称           |
+|     --rm      |         容器退出后自动删除容器          |
+| -v, --volume  |     给容器挂载存储卷，挂载到容器的某个目录      |
+|   --network   |          指定容器的网络模式           |
+|   -e, --env   |     指定环境变量，容器中可以使用该环境变量      |
+| -p, --publish |          指定容器暴露的端口           |
+|   --restart   |          设置容器的重启策略           |
+| --privileged  |          给容器赋予额外的权限          |
+|   --memory    |          指定容器的内存上限           |
+|   --cpuset    | 设置容器可以使用哪些CPU，此参数可以用来容器独占CPU |
+| --entrypoint  |         覆盖image的入口点          |
 
 ## Dockerfile
 
 ### 构建nodejs项目
+
 ```
 FROM alpine:latest
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
@@ -36,6 +81,7 @@ CMD ["start"]
 ```
 
 ## 安装elasticsearch
+
 ```Shell
 docker run --name elasticsearch -p 9200:9200  -p 9300:9300 \
 -e "discovery.type=single-node" \
@@ -54,12 +100,15 @@ docker run -d  --name elasticsearch-head -p 9100:9100 docker.io/mobz/elasticsear
 ```
 
 ## hadoop相关
+
 ### 安装spark
+
 ```Shell
 docker run -it --name my-spark -p 4040:4040 apache/spark /opt/spark/bin/spark-shell
 ```
 
 ## mq安装
+
 ### 安装rabbitmq
 
 ```Shell
@@ -91,8 +140,8 @@ docker restart my-rabbit
 
 访问：http://localhost:15672，输入创建好的账号密码登录
 
-
 ### 安装activemq
+
 ```Shell
 docker run --name='activemq' \
             -itd \
@@ -104,43 +153,3 @@ docker run --name='activemq' \
             webcenter/activemq:latest
 ```
 
-## 什么是Docker Extensions？
-Docker Extensions是一个允许开发人员在Docker Desktop中构建新功能、扩展现有功能并发现和集成其他工具的扩展系统。它通过使用第三方工具（如插件）来帮助开发人员扩展Docker的功能，从而提高工作效率和工作流的顺畅性。
-
-### Disk Usage扩展
-你可以立即了解Docker资源在计算机上使用了多少磁盘空间，并通过删除特定类型的资源（如停止的容器、悬挂的镜像和未使用的卷）来回收空间。
-
-### Tailscale扩展
-Tailscale扩展允许你在Docker Desktop上完成这项工作。Tailscale私下几乎立即共享你的容器，而无需进行任何网络设置。它检测所有暴露端口的容器，并使其可供你的私人Tailscale网络中的人员使用。属于你的Tailscale网络的任何人都可以看到你的容器。
-
-### Logs Explorer扩展
-Logs Explorer扩展提供了一个可以同时浏览正在运行和停止的容器中的日志、使用正则表达式对其进行过滤以及使用粘性搜索过滤器的地方。
-
-### Slim.AI扩展
-它使你能够深入了解本地镜像的组成，如文件系统、元数据、图层信息等。这有助于识别容器中的实用程序（例如，curl），并探索其中包含的任何基于文本的文件（如配置、shell脚本、REASME）。
-
-### docker extension命令
-```Shell
-(base) xiwenlu@xiwenludeMac-mini ~ % docker extension help
-Usage:  docker extension [OPTIONS] COMMAND
-
-Manages Docker extensions
-
-Options:
-      --socket string   The Desktop extension manager socket
-
-Management Commands:
-  dev             Extension development helpers
-
-Commands:
-  init            Create a new Docker Extension based on a template.
-  install         Install a Docker extension with the specified image
-  ls              List installed Docker extensions
-  rm              Remove a Docker extension
-  share           Generate a link to share the extension.
-  update          Remove and re-install a Docker extension
-  validate        Validate an extension image or metadata file
-  version         Print the client and server versions
-
-
-```
