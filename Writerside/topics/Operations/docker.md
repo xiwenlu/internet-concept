@@ -53,6 +53,7 @@ docker extension help
 |:-------------:|:----------------------------:|
 | -d, --detach  |           在后台运行容器            |
 |    --name     |          为容器指定一个名称           |
+|  --hostname   |           设置容器的主机名           |
 |     --rm      |         容器退出后自动删除容器          |
 | -v, --volume  |     给容器挂载存储卷，挂载到容器的某个目录      |
 |   --network   |          指定容器的网络模式           |
@@ -63,6 +64,7 @@ docker extension help
 |   --memory    |          指定容器的内存上限           |
 |   --cpuset    | 设置容器可以使用哪些CPU，此参数可以用来容器独占CPU |
 | --entrypoint  |         覆盖image的入口点          |
+|     -itd      |     后台模式运行容器，并打开伪终端与容器交互     |
 
 ## Dockerfile
 
@@ -107,14 +109,22 @@ docker run -d  --name elasticsearch-head -p 9100:9100 docker.io/mobz/elasticsear
 docker run -it --name my-spark -p 4040:4040 apache/spark /opt/spark/bin/spark-shell
 ```
 
-## mq安装
+## 安装mq
 
 ### 安装rabbitmq
 
 ```Shell
-# -d 表示后台运行
-# -p 表示端口映射
-docker run -d --hostname my-rabbit --name rabbit -p 15672:15672 -p 5672:5672 rabbitmq:latest
+# 创建rabbitmq.conf配置文件
+echo "management.load_definitions = /etc/rabbitmq/definitions.json " >  rabbitmq.conf
+
+# 启动rabbitmq，-v 可选
+docker run --hostname my-rabbit \
+           --name rabbit \
+           -p 15672:15672 \
+           -p 5672:5672 \
+           -v rabbitmq_data:/var/lib/rabbitmq \
+           -v /path/to/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+           rabbitmq:latest
 
 # 容器内部。装载可视化插件
 rabbitmq-plugins enable rabbitmq_management
@@ -138,12 +148,12 @@ rabbitmq-plugins enable rabbitmq_management
 docker restart my-rabbit
 ```
 
-访问：http://localhost:15672，输入创建好的账号密码登录
+访问：[http://localhost:15672](http://localhost:15672)，输入账号guest和密码guest即可登录。
 
 ### 安装activemq
 
 ```Shell
-docker run --name='activemq' \
+docker run --name=activemq \
             -itd \
             -p 8161:8161 \
             -p 61616:61616 \
