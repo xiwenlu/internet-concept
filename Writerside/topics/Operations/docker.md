@@ -114,16 +114,12 @@ docker run -it --name my-spark -p 4040:4040 apache/spark /opt/spark/bin/spark-sh
 ### 安装rabbitmq
 
 ```Shell
-# 创建rabbitmq.conf配置文件
-echo "management.load_definitions = /etc/rabbitmq/definitions.json " >  rabbitmq.conf
-
 # 启动rabbitmq，-v 可选
 docker run --hostname my-rabbit \
            --name rabbit \
            -p 15672:15672 \
            -p 5672:5672 \
            -v rabbitmq_data:/var/lib/rabbitmq \
-           -v /path/to/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
            rabbitmq:latest
 
 # 容器内部。装载可视化插件
