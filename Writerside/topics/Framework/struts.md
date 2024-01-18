@@ -1,5 +1,6 @@
 # struts
 
+1. Struts2中action要继承ActionSupport类
 
 ## struts概述
 1. struts2配置文件是(struts.xml),此配置文件被核心控制器默认加载时名字必须为struts.xml，必须在src路径下
@@ -52,9 +53,6 @@ struts.xml中，Action配置name值时通过通配符*配置请求的格式，cl
 2. 继承抽象类 AbstractInterceptor 重写intercept方法（一般使用此种实现方式）
 3. 继承 MethodFilterInterceptor 类，允许拦截器通过执行的方法： invocation.invoke();
 
-## Struts2中action中如何获得request
-HttpServletRequest request = ServletActionContext.getRequest();
-
 
 ## action类的作用
 1. url：action负责url的调换      
@@ -72,10 +70,13 @@ HttpServletRequest request = ServletActionContext.getRequest();
 1. Action是多实例的, 每次访问都会创建一个新的Action对象, 当返回结果调用return时action被销毁; 而Servlet是单实例的, 默认只在第一次访问时创建
 2. Servlet中, 成员变量存在线程安全的问题
 
-## 填空题
-1. Struts2中action要继承哪个类(ActionSupport)
 
-## struts2中获取参数
-```java
+## Struts2中action的常用方法
+```Java
+
+// 获取request对象
+HttpServletRequest request = ServletActionContext.getRequest();
+
+// 设置session参数
 ServletActionContext.getRequest().getSession().setAttribute("XX","XX");
 ```

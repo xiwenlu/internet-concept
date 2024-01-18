@@ -1,4 +1,4 @@
-# spring 注入/装配
+# spring注入
 
 
 ## Spring的两种自动注入方式 {id="spring_1"}
@@ -143,3 +143,11 @@ getSingleton()的整个过程，Spring首先从一级缓存singletonObjects中�
 PersonA的setter依赖了PersonB的实例对象，同时PersonB的setter依赖了PersonA的实例对象”这种循环依赖的情况。     
 PersonA首先完成了初始化的第一步，并且将自己提前曝光到singletonFactories中，此时进行初始化的第二步，发现自己依赖对象PersonB，此时就尝试去get(PersonB)，发现PersonB还没有被create，所以执行create流程，PersonB在初始化第一步的时候发现自己依赖了对象PersonA，于是尝试get(PersonA)，尝试一级缓存singletonObjects(肯定没有，因为A还没初始化完全)，尝试二级缓存earlySingletonObjects（也没有），尝试三级缓存singletonFactories，由于PersonA通过ObjectFactory将自己提前曝光了，所以PersonB能够通过ObjectFactory.getObject拿到PersonA对象(虽然PersonA还没有初始化完全)，PersonB拿到PersonA对象后顺利完成了初始化阶段1、2、3，完全初始化之后将自己放入到一级缓存singletonObjects中。此时返回PersonA中，PersonA此时能拿到PersonB的对象顺利完成自己的初始化阶段2、3，最终A也完成了初始化，进去了一级缓存singletonObjects中。而且，由于PersonB拿到了PersonA的对象引用，所以PersonB现在中的PersonA对象完成了初始化。
 
+## 怎样用注解的方式配置 Spring？ {id="spring_2"}
+Spring在2.5版本以后开始支持用注解的方式来配置依赖注入。可以用注解的方式来替代XML方式的 bean 描述，可以将bean描述转移到组件类的内部，只需要在相关类上、方法上或者字段声明上使用注解即可。注解注入将会被容器在XML注入之前被处理，所以后者会覆盖掉前者对于同一个属性的处理结果。注解装配在Spring中是默认关闭的。所以需要在Spring文件中配置一下才能使用基于注解的装配模式。如果你想要在你的应用程序中使用关于注解的方法的话， 请参考如下的配置。   
+在标签配置完成以后，就可以用注解的方式在Spring中向属性、方法和构造方法中自动装配变量。      
+``下面是几种比较重要的注解类型：``
+1. ``@Required：`` 该注解应用于设值方法。
+2. ``@Autowired：`` 该注解应用于有值设值方法、 非设值方法、 构造方法和变量。
+3. ``@Qualifier：`` 该注解和@Autowired 注解搭配使用， 用于消除特定 bean 自动装配的歧义。
+4. ``JSR-250 Annotations：`` Spring 支 持 基 于 JSR-250 注 解 的 以 下 注 解 ， @Resource、@PostConstruct 和 @PreDestroy。

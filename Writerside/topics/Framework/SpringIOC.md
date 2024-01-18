@@ -1,6 +1,6 @@
 # SpringIOC
 
-## ioc的两种注入方式：属性注入、构造方法注入 {id="ioc_1"}
+1. ioc有属性注入和构造方法注入两种注入方式。
 
 ## IOC的理解 {id="ioc_2"}
 1. IOC的作用：产生对象实例，所以它是基于工厂设计模式的
@@ -33,4 +33,4 @@ DI：由容器动态的将某个依赖关系注入到组件之中。依赖注入
 ## 请解释下spring框架中的IOC
 Spring 中 的 org.springframework.beans 包和 org.springframework.context 包构成了Spring 框架 IOC 容器的基础。    
 BeanFactory 接口 提供了一个先进的配置机制，使得任何类型的对象的配置成为可能。     
-ApplicationContex 接口对 BeanFactory（是一个子接口）进行了扩展，在BeanFactory 的基础上添加了其他功能， 比如与 Spring 的 AOP 更容易集成， 也提供了处理 message resource的机制（用于国际化）、事件传播以及应用层的特别配置， 比如针对Web 应用WebApplicationContext。
+ApplicationContent 接口对 BeanFactory（是一个子接口）进行了扩展，在BeanFactory 的基础上添加了其他功能， 比如与 Spring 的 AOP 更容易集成， 也提供了处理 message resource的机制（用于国际化）、事件传播以及应用层的特别配置， 比如针对Web 应用WebApplicationContext。
