@@ -1,6 +1,6 @@
 # Spring
 
-spring中通过scope 属性的singleton设置单例，prototype设置多例
+1. spring中通过scope 属性的singleton设置单例，prototype设置多例。
 
 ## Spring源码看过吗
 等待补充

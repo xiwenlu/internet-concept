@@ -47,7 +47,7 @@
         <toc-element topic="SpringAOP.md"/>
         <toc-element topic="SpringModule.md"/>
         <toc-element topic="SpringAnnotation.md"/>
-        <toc-element topic="SpringTransaction.md"/>
+        <toc-element topic="spring-transaction.md"/>
         <toc-element topic="SpringBoot.md"/>
         <toc-element topic="jsp.md"/>
         <toc-element topic="struts.md"/>

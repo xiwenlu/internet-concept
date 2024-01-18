@@ -1,11 +1,8 @@
 # spring注入
 
-
-## Spring的两种自动注入方式 {id="spring_1"}
-byName、byType
-
-## ioc的两种注入方式
-属性注入、构造方法注入
+1. spring有byName和byType两种自动注入方式。
+2. 在Spring中可以注入null或空字符串。
+3. 不是所有类型都能自动装配，原生类型和字符串类型不可以自动装配。
 
 ## 请举例说明如何在 Spring 中注入一个 Java 集合
 Spring 提供了以下四种集合类的配置元素：
@@ -19,7 +16,7 @@ Spring 提供了以下四种集合类的配置元素：
 ``第一种方法是使用如下面代码所示的 标签：``     
 admin@gupaoedu.com  
 support@gupaoedu.com    
-也可用” util:” 命名空间来从 properties 文件中创建出一个 propertiesbean， 然后利用 setter方法注入 bean 的引用。
+也可用” util:” 命名空间来从 properties 文件中创建出一个 propertiesBean， 然后利用 setter方法注入 bean 的引用。
 
 ## 请解释SpringBean的自动装配
 在 Spring 框架中， 在配置文件中设定 bean 的依赖关系是一个很好的机制，Spring 容器还可以自动装配合作关系 bean 之间的关联关系。 这意味着 Spring 可以通过向 Bean Factory 中注入的方式自动搞定 bean 之间的依赖关系。 自动装配可以设置在每个 bean 上， 也可以设定在特定的 bean 上。    
@@ -76,8 +73,7 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 ``模糊特性：`` 自动装配总是没有自定义装配精确， 因此， 如果可能尽量使用自定义装配。
 
 
-## 在Spring中可以注入null或空字符串吗
-完全可以。
+
 
 
 ## 构造方法注入和设值注入有什么区别
@@ -88,12 +84,6 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 2. 设值注入不会重写构造方法的值。如果我们对同一个变量同时使用了构造方法注入又使用了设置方法注入的话，那么构造方法将不能覆盖由设值方法注入的值。很明显，因为构造方法尽在对象被创建时调用。
 3. 在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。
 4. 在设值注入时如果对象A和对象B互相依赖，在创建对象A时Spring会抛出sObjectCurrentlyInCreationException异常，因为在B对象被创建之前A对象是不能被创建的，反之亦然。所以Spring用设值注入的方法解决了循环依赖的问题，因对象的设值方法是在对象被创建之前被调用的。
-
-
-## 是不是所有类型都能自动装配？如果不是请举例
-不是。原生类型/字符串类型不可以自动装配
-
-
 
 
 ## 自动装配有哪些好处和坏处
