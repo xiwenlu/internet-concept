@@ -1,4 +1,4 @@
-# spring 配置
+# spring配置
 
 
 ## 如何减少Spring XML的配置数量

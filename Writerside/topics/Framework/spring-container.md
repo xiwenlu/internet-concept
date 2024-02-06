@@ -1,0 +1,6 @@
+# spring容器
+
+## ApplicationContext和BeanFactory的区别?
+ApplicationContext是基于BeanFactory的，BeanFactory就相当人的心脏，ApplicationContext就相当于人的躯干，Spring容器也 是整个人，所以通常来说Spring的容器就是ApplicationContext。BeanFactory是面向spring内部使用，ApplicationContext是面向 使用spring框架的开发人员。
+
+BeanFactroy采用的是延迟加载形式来注入Bean的，即只有在使用到某个Bean时(调用getBean())，才对该Bean进行加载实例化，这 样，我们就不能发现一些存在的Spring的配置问题。而ApplicationContext则相反，它是在容器启动时，一次性创建了所有的单实列 Bean。这样，在容器启动时，我们就可以发现Spring中存在的配置错误。因此ApplicationContext的初始化时间比BeanFactory稍长 些，但访问bean的时候就更快些。

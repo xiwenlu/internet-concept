@@ -40,15 +40,18 @@
     <toc-element toc-title="Java框架">
         <toc-element topic="spring.md"/>
         <toc-element topic="SpringIOC.md"/>
+        <toc-element topic="SpringAOP.md"/>
         <toc-element topic="SpringBean.md"/>
+        <toc-element topic="spring-container.md"/>
+        <toc-element topic="SpringAnnotation.md"/>
+        <toc-element topic="SpringTransaction.md"/>
+        <toc-element topic="spring-module.md"/>
+        <toc-element topic="spring-event.md"/>
         <toc-element topic="ch26.md"/>
         <toc-element topic="SpringBoot.md"/>
         <toc-element topic="springMVC.md"/>
-        <toc-element topic="SpringAOP.md"/>
         <toc-element topic="SpringModule.md"/>
         <toc-element topic="spring-setting.md"/>
-        <toc-element topic="SpringAnnotation.md"/>
-        <toc-element topic="SpringTransaction.md"/>
         <toc-element topic="jsp.md"/>
         <toc-element topic="struts.md"/>
         <toc-element topic="junit.md"/>
@@ -89,6 +92,7 @@
         <toc-element topic="solr.md"/>
         <toc-element topic="data-handle.md"/>
         <toc-element topic="log.md"/>
+        <toc-element topic="payment.md"/>
     </toc-element>
 
     <toc-element toc-title="中间件">
