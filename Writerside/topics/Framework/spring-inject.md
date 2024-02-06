@@ -1,11 +1,8 @@
-# spring 注入/装配
+# spring注入
 
-
-## Spring的两种自动注入方式 {id="spring_1"}
-byName、byType
-
-## ioc的两种注入方式
-属性注入、构造方法注入
+1. spring有byName和byType两种自动注入方式。
+2. 在Spring中可以注入null或空字符串。
+3. 不是所有类型都能自动装配，原生类型和字符串类型不可以自动装配。
 
 ## 请举例说明如何在 Spring 中注入一个 Java 集合
 Spring 提供了以下四种集合类的配置元素：
@@ -19,7 +16,7 @@ Spring 提供了以下四种集合类的配置元素：
 ``第一种方法是使用如下面代码所示的 标签：``     
 admin@gupaoedu.com  
 support@gupaoedu.com    
-也可用” util:” 命名空间来从 properties 文件中创建出一个 propertiesbean， 然后利用 setter方法注入 bean 的引用。
+也可用” util:” 命名空间来从 properties 文件中创建出一个 propertiesBean， 然后利用 setter方法注入 bean 的引用。
 
 ## 请解释SpringBean的自动装配
 在 Spring 框架中， 在配置文件中设定 bean 的依赖关系是一个很好的机制，Spring 容器还可以自动装配合作关系 bean 之间的关联关系。 这意味着 Spring 可以通过向 Bean Factory 中注入的方式自动搞定 bean 之间的依赖关系。 自动装配可以设置在每个 bean 上， 也可以设定在特定的 bean 上。    
@@ -76,8 +73,7 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 ``模糊特性：`` 自动装配总是没有自定义装配精确， 因此， 如果可能尽量使用自定义装配。
 
 
-## 在Spring中可以注入null或空字符串吗
-完全可以。
+
 
 
 ## 构造方法注入和设值注入有什么区别
@@ -88,12 +84,6 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 2. 设值注入不会重写构造方法的值。如果我们对同一个变量同时使用了构造方法注入又使用了设置方法注入的话，那么构造方法将不能覆盖由设值方法注入的值。很明显，因为构造方法尽在对象被创建时调用。
 3. 在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。
 4. 在设值注入时如果对象A和对象B互相依赖，在创建对象A时Spring会抛出sObjectCurrentlyInCreationException异常，因为在B对象被创建之前A对象是不能被创建的，反之亦然。所以Spring用设值注入的方法解决了循环依赖的问题，因对象的设值方法是在对象被创建之前被调用的。
-
-
-## 是不是所有类型都能自动装配？如果不是请举例
-不是。原生类型/字符串类型不可以自动装配
-
-
 
 
 ## 自动装配有哪些好处和坏处
@@ -143,3 +133,11 @@ getSingleton()的整个过程，Spring首先从一级缓存singletonObjects中�
 PersonA的setter依赖了PersonB的实例对象，同时PersonB的setter依赖了PersonA的实例对象”这种循环依赖的情况。     
 PersonA首先完成了初始化的第一步，并且将自己提前曝光到singletonFactories中，此时进行初始化的第二步，发现自己依赖对象PersonB，此时就尝试去get(PersonB)，发现PersonB还没有被create，所以执行create流程，PersonB在初始化第一步的时候发现自己依赖了对象PersonA，于是尝试get(PersonA)，尝试一级缓存singletonObjects(肯定没有，因为A还没初始化完全)，尝试二级缓存earlySingletonObjects（也没有），尝试三级缓存singletonFactories，由于PersonA通过ObjectFactory将自己提前曝光了，所以PersonB能够通过ObjectFactory.getObject拿到PersonA对象(虽然PersonA还没有初始化完全)，PersonB拿到PersonA对象后顺利完成了初始化阶段1、2、3，完全初始化之后将自己放入到一级缓存singletonObjects中。此时返回PersonA中，PersonA此时能拿到PersonB的对象顺利完成自己的初始化阶段2、3，最终A也完成了初始化，进去了一级缓存singletonObjects中。而且，由于PersonB拿到了PersonA的对象引用，所以PersonB现在中的PersonA对象完成了初始化。
 
+## 怎样用注解的方式配置 Spring？ {id="spring_2"}
+Spring在2.5版本以后开始支持用注解的方式来配置依赖注入。可以用注解的方式来替代XML方式的 bean 描述，可以将bean描述转移到组件类的内部，只需要在相关类上、方法上或者字段声明上使用注解即可。注解注入将会被容器在XML注入之前被处理，所以后者会覆盖掉前者对于同一个属性的处理结果。注解装配在Spring中是默认关闭的。所以需要在Spring文件中配置一下才能使用基于注解的装配模式。如果你想要在你的应用程序中使用关于注解的方法的话， 请参考如下的配置。   
+在标签配置完成以后，就可以用注解的方式在Spring中向属性、方法和构造方法中自动装配变量。      
+``下面是几种比较重要的注解类型：``
+1. ``@Required：`` 该注解应用于设值方法。
+2. ``@Autowired：`` 该注解应用于有值设值方法、 非设值方法、 构造方法和变量。
+3. ``@Qualifier：`` 该注解和@Autowired 注解搭配使用， 用于消除特定 bean 自动装配的歧义。
+4. ``JSR-250 Annotations：`` Spring 支 持 基 于 JSR-250 注 解 的 以 下 注 解 ， @Resource、@PostConstruct 和 @PreDestroy。

@@ -13,11 +13,11 @@ Linux是一套免费使用和自由传播的类Unix操作系统，是一个基�
 
 ## linux添加java环境变量
 1. 打开终端，输入*sudo vim /etc/profile*在最后一行添加以下内容
-```Text
-export JAVA_HOME=/usr/java/jdk1.7.0_71      
-export PATH=$JAVA_HOME/bin:$PATH        
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-```
+    ```Text
+    export JAVA_HOME=/usr/java/jdk1.7.0_71      
+    export PATH=$JAVA_HOME/bin:$PATH        
+    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+    ```
 2. 终端输入*source /etc/profile*使配置文件立即生效
 3. 终端输入*echo $JAVA_HOME*验证是否配置成功，如果输出 JDK 的安装路径，则说明配置成功。
 
@@ -55,7 +55,11 @@ scp -r /Users/xiwenlu/nginx/nginx.conf root@www.baidu.com:/home/nginx/conf/
 # 下载
 scp root@www.baidu.com:/home/nginx/conf/nginx.conf /Users/xiwenlu/nginx
 
+# 创建一个空文件
+touch file.txt
 
+# 将指定的字符串输出到终端或者文件中
+echo "Hello, World!" > file.txt
 ```
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>

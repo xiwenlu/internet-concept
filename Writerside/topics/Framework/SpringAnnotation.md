@@ -32,7 +32,7 @@ XML解耦了配置和原代码，而注解则精简了配置。spring框架基�
 2. @Autowired  
 3. @Resource   
 4. @PostContuct    
-5. @PreDestory
+5. @PreDestroy
 
 ## @Autowired @Resource @Inject 的区别
 @Resource

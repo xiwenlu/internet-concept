@@ -71,8 +71,8 @@ Spring框架并没有对单例bean进行任何多线程的封装处理。关于�
 
 ## 哪些是最重要的bean生命周期方法？能重写它们吗？ {id="bean_1"}
 Setup/teardown        
-Xml中对应Init-method/destory-method       
-@PostConstruct @PreDestory    
+Xml中对应Init-method/destroy-method       
+@PostConstruct @PreDestroy    
 bean标签有两个重要的属性(init-method 和 destroy-method)，可以通过这两个属性定义自己的初始化方法和析构方法。Spring也有相应的注解：@PostConstruct 和 @PreDestroy。
 
 

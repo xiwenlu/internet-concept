@@ -98,7 +98,7 @@ db.student.find({"age":{$gt:10,$lt:30}})
 db.student.find({"name":"zhangsan","age":6})；	
 #相当于select * from student where age =6 or name = 'lsi';
 db.student.find({$or:[{"age":6},{"name":"lsi"}]})；	
-#模糊查询 查询名字中带有s的人 相当于 select * from student where name like '%s%'; 相当于 %%
+# 模糊查询名字中带有s的人
 db.student.find({"name":/s/}) 
 #查看姓zhang的学生 相当于 select *　from student where name like 'zhang%'; ^标识一什么开头 相当于js正则中的用法
 db.student.find({"name":/^zhang/})
