@@ -1,14 +1,46 @@
 # springMVC
 
+## 什么是springMVC？ {id="springmvc_8"}
+Spring MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，使用了MVC架构模式的思想，框架的目的就是帮助我们简化开发，Spring MVC也是要简化我们日常Web开发的。
+
+
+## springMVC的优点？ {id="springmvc_9"}
+1. 简单、容易上手
+2. 性能优异：jsp+servlet > struts == SpringMVC > struts2（但是struts2出现了一个不可修复的bug）
+3. 灵活、易于扩展
+
+
+## SpringMVC接口 {id="springmvc_10"}
+
+### DispatcherServlet接口
+Spring提供的前端控制器，所有的请求都有经过它来统一分发。在DispatcherServlet将请求分发给Spring Controller之前，需要借助于Spring提供的HandlerMapping定位到具体的Controller。
+
+DispatcherServlet是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。
+1. 截获符合特定格式的URL请求。
+2. 初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。
+3. 初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。
+
+### HandlerMapping接口
+能够完成客户请求到Controller映射。
+
+HandlerMapping:处理映射器，为用户发送的请求找到合适的Handler Adapter。
+使用 mvc:annotation-driven 做配置，spring mvc 会默认使用 DefaultAnnotationHandlerMapping 和 AnnotationMethodHandlerAdapter
+### Controller接口
+Controller将处理用户请求。一旦Controller处理完用户请求，则返回ModelAndView对象给DispatcherServlet前端控制器，ModelAndView中包含了模型（Model）和视图（View）。
+
+从宏观角度考虑，DispatcherServlet是整个Web应用的控制器；从微观考虑，Controller是单个Http请求处理过程中的控制器，而ModelAndView是Http请求过程中返回的模型（Model）和视图（View）。
+### ViewResolver接口
+Spring提供的视图解析器（ViewResolver）在Web应用中查找View对象，从而将相应结果返回给客户。
 
 ## springMVC和spring的关系
-springMVC位于spring web端的一个框架，是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦。附：基于请求驱动指的就是使用请求-响应模型。  
-从名字上就可以窥探出，Spring>SpringMVC，那么事实上，spring和SpringMVC是一种父子关系。SpringMVC是spring扩展出的一个应用于web端的框架。在这里需要注意的一点，就是到底什么是父子容器关系：    
+springMVC位于spring web端的一个框架，是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦。
+
+附：基于请求驱动指的就是使用请求-响应模型。从名字上就可以窥探出，Spring>SpringMVC，那么事实上，spring和SpringMVC是一种父子关系。SpringMVC是spring扩展出的一个应用于web端的框架。在这里需要注意的一点，就是到底什么是父子容器关系：    
 spring主要的作用是黏合其他模块组件，进行统一管理，springmvc则主要是负责web端。那么，我们都知道，我们在应用spring的时候，可以使用注入。这个时候，如果我们的web端是用的SpringMVC，这个时候，controller理论上是通过SpringMVC去注入，但是，使用spring注入，同样是可行的。同理，service等层，使用SpringMVC配置的统一扫描装配也是可以的。所以，如果说只是为了使用spring的依赖注入，是大可不必将springMVC和spring同时使用的。他们完全可以分开！   
 但是，尽管SpringMVC和spring都可以进行自动装配扫描，值得注意的是：    
 spring（父容器）并不能直接访问SpringMVC（子容器）所注入的对象，但是SpringMVC却可以访问到spring装载的对象。所以，在配置自动装配的时候，应该注意到这一点。
 
-## springMVC、struts1与struts2的主要区别
+## springMVC、struts1和struts2的区别
 1. springMVC单例 非线程安全  
     struts1单例 非线程安全    
     struts2线程安全对每个请求都产生一个实例
@@ -40,7 +72,8 @@ Struts2是基于类的通过声明全局的私有属性并生成get、set方法�
 
 
 ## springMVC的运行原理
-整个处理过程从一个HTTP请求开始：
+
+整个处理过程从一个HTTP请求开始的
 1. Tomcat在启动时加载解析web.xml,找到spring  mvc的前端总控制器DispatcherServlet,并且通过DispatcherServlet来加载相关的配置文件信息。
 2. DispatcherServlet接收到客户端请求，找到对应HandlerMapping，根据映射规则，找到对应的处理器（Handler）。
 3. 调用相应处理器中的处理方法，处理该请求后，会返回一个ModelAndView。

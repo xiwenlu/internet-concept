@@ -159,3 +159,7 @@ docker run --name=activemq \
             webcenter/activemq:latest
 ```
 
+## 安装mysql
+```Shell
+docker run --name my-mysql -e MYSQL_ROOT_PASSWORD=12345678 -d mysql
+```

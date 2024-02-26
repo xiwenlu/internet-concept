@@ -44,12 +44,11 @@
         <toc-element topic="SpringBean.md"/>
         <toc-element topic="spring-container.md"/>
         <toc-element topic="SpringAnnotation.md"/>
-        <toc-element topic="SpringTransaction.md"/>
+        <toc-element topic="spring-transaction.md"/>
         <toc-element topic="spring-module.md"/>
         <toc-element topic="spring-event.md"/>
-        <toc-element topic="ch26.md"/>
         <toc-element topic="SpringBoot.md"/>
-        <toc-element topic="springMVC.md"/>
+        <toc-element topic="spring-mvc.md"/>
         <toc-element topic="SpringModule.md"/>
         <toc-element topic="spring-setting.md"/>
         <toc-element topic="jsp.md"/>
@@ -134,7 +133,7 @@
         <toc-element topic="nginx.md"/>
         <toc-element topic="tomcat.md"/>
         <toc-element topic="mac-install.md"/>
-        <toc-element topic="docker-install.md"/>
+        <toc-element topic="docker.md"/>
         <toc-element topic="node.md"/>
         <toc-element topic="mongodb-install.md"/>
     </toc-element>
