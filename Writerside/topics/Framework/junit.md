@@ -45,3 +45,7 @@ BeforeClass----Before-----Test-----After-----Before-----Test-----After-----After
 ## junit和main的区别
 1. junit与main方法相比的优势：代码量少、结构清晰、灵活性更好
 2. main：一个类中只能有一个main方法，层次结构方面不够清晰，运行具体某一个方法时，要将其他的方法注释掉
+
+
+## 断言能在生产使用吗？
+在Java中，断言默认是禁用的，所以在生产环境中，你不需要做任何事情来禁用断言。如果你想在开发或测试环境中启用断言，你可以在启动Java应用时添加-ea或-enableassertions参数。
