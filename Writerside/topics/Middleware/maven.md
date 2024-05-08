@@ -140,5 +140,13 @@ wrapper  | nexus started.
 2. \<optional>true\</optional> 父模块A的依赖中添加\<optional>true\</optional>，显式调用joda-time的jar包依赖，在这种情况下，在子模块B中会正常引用joda-time依赖jar包，对于\<optional>true\</optional>来说，父模块中是否加上\<dependencyManagement>都一样，都是需要显示调用才能引用joda-time的jar包依赖
 
 
+## classpath*: 和 classpath: 的区别
 
+在多模块的 Spring Boot 项目中，classpath*: 和 classpath: 的行为可能会有所不同。这是因为在多模块项目中，每个模块都有自己的类路径。  
+1. classpath: 只会在当前模块的类路径下搜索资源，如果有多个类路径资源符合，只会返回第一个找到的资源。
+2. classpath*: 会在所有模块的类路径下搜索资源，如果有多个类路径资源符合，会返回所有找到的资源。
+
+因此，如果你的 MyBatis 映射文件分布在多个模块中，你可能需要使用 classpath*: 来确保 MyBatis 能找到所有模块中的映射文件。
+
+在多模块的项目中，如果你的 application.yml 配置文件位于父模块中，而不是子模块中，那么使用 classpath*: 确实可能会导致问题。这是因为 classpath*: 会在所有模块的类路径下搜索资源，如果有多个类路径资源符合，会返回所有找到的资源。如果不同的子模块中存在相同的 XML 文件，那么这些文件都会被加载，可能会导致冲突或者错误。
 
