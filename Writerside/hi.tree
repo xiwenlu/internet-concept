@@ -38,13 +38,12 @@
     </toc-element>
 
     <toc-element toc-title="Java框架">
+        <toc-element topic="framework.md"/>
         <toc-element topic="spring.md"/>
         <toc-element topic="SpringIOC.md"/>
         <toc-element topic="SpringAOP.md"/>
         <toc-element topic="SpringBean.md"/>
         <toc-element topic="spring-container.md"/>
-        <toc-element topic="SpringAnnotation.md"/>
-        <toc-element topic="spring-transaction.md"/>
         <toc-element topic="spring-module.md"/>
         <toc-element topic="spring-event.md"/>
         <toc-element topic="SpringBoot.md"/>

@@ -1,46 +1,153 @@
-# springMVC
+# spring MVC
 
-## 什么是springMVC？ {id="springmvc_8"}
-Spring MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，使用了MVC架构模式的思想，框架的目的就是帮助我们简化开发，Spring MVC也是要简化我们日常Web开发的。
+## 什么是 MVC?
+MVC（Model-View-Controller）是一种软件设计模式，用于构建用户界面，特别是在Web应用中。它将应用分为三个组件：
+1. Model：包含业务逻辑和数据，处理数据的存储和操作。
+2. View：显示用户界面，从Model获取数据并呈现给用户。
+3. Controller：协调Model和View，处理用户输入，更新Model并刷新View。
+
+这种模式的好处是将数据处理、界面展示和用户交互分开，提高代码的可维护性、可测试性和灵活性。许多Web框架，如Spring MVC、Rails等，都是基于MVC模式设计的。
+
+## 什么是 Spring MVC？
+
+Spring MVC 是 Spring 框架的一个模块，用于构建基于 Java 的 Web 应用程序。它是一个模型-视图-控制器（MVC）架构的实现，遵循分层设计原则，将应用程序的业务逻辑、数据和用户界面（UI）组件分离，以提高代码的可测试性和可维护性。
+
+Spring MVC 提供了以下核心功能：
+1. DispatcherServlet：作为前端控制器，它负责接收 HTTP 请求，根据请求信息（如 URL 和请求方法）调度到相应的处理器（Controller）。
+2. Model：模型部分通常由业务对象和数据访问对象组成，负责处理业务逻辑和数据操作。
+3. Controller：控制器处理请求，调用模型进行业务处理，并决定如何响应。它将模型数据绑定到视图中。
+4. View Resolver：视图解析器根据控制器返回的逻辑视图名称，查找并渲染实际的视图（如 JSP、Thymeleaf、Freemarker 等）。
+5. Data Binding：Spring MVC 支持将请求参数自动绑定到控制器方法的参数上，以及将模型数据绑定到视图中。
+6. Validation：提供了验证机制，可以验证用户输入的有效性。
+7. Internationalization (i18n)：支持多语言，可以根据用户首选的语言提供本地化内容。
+8. Exception Handling：可以自定义异常处理策略，将异常转换为有意义的响应。
+9. RESTful Support：支持创建 RESTful 风格的 Web 服务。
+
+Spring MVC 可以与其他 Spring 模块（如 Spring Core、Spring Data、Spring Security 等）无缝集成，提供全面的 Web 应用开发解决方案。由于其灵活性和强大的功能，Spring MVC 成为了许多企业级 Java Web 应用的首选框架。
 
 
-## springMVC的优点？ {id="springmvc_9"}
-1. 简单、容易上手
-2. 性能优异：jsp+servlet > struts == SpringMVC > struts2（但是struts2出现了一个不可修复的bug）
-3. 灵活、易于扩展
+## Spring MVC的优点？ {id="advantage"}
+
+Spring MVC作为Spring框架的一部分，具有以下显著优点：
+1. 松耦合：通过依赖注入（DI）和面向接口编程，降低了组件间的耦合，增强了代码的可测试性和可维护性。
+2. 注解驱动：大量使用注解减少XML配置，使得开发更加简洁和快速。如@Controller、@RequestMapping、@Autowired等。
+3. 模型-视图-控制器架构：清晰的MVC设计模式使得职责分离明确，便于团队协作和代码管理。
+4. 数据绑定和验证：内置的数据绑定和验证机制简化了模型数据与请求参数的映射和验证过程。
+5. 国际化支持：提供i18n（国际化）支持，方便创建多语言应用。
+6. 异常处理：自定义的异常处理机制，可以优雅地处理错误和异常。
+7. RESTful支持：支持创建符合REST原则的API，适应现代Web服务的需求。
+8. 视图技术的灵活性：支持多种视图技术，如JSP、Thymeleaf、FreeMarker等，可根据项目需求选择。
+9. 可扩展性：通过拦截器（Interceptor）、自定义注解等机制，可以方便地扩展和定制功能。
+10. 性能：经过优化的DispatcherServlet和视图解析器，能够高效处理请求。
+11. 强大的社区和生态系统：Spring有一个庞大的开发者社区，丰富的第三方库和插件，以及详尽的文档和教程。
+12. 与Spring框架的集成：可以无缝集成Spring的其他模块，如Spring Security、Spring Data等，构建完整的应用解决方案。
+13. 测试友好：支持单元测试和集成测试，方便编写测试代码。
+
+这些优点使得Spring MVC成为开发企业级Web应用的流行选择。
 
 
-## SpringMVC接口 {id="springmvc_10"}
+## Spring MVC的缺点？ {id="shortcoming"}
+尽管Spring MVC是一个强大且广泛使用的Web框架，但它也有一些潜在的缺点和挑战，包括：
+1. 学习曲线：对于初学者，尤其是那些不熟悉Spring框架的人来说，Spring MVC的学习曲线可能会比较陡峭。它涉及到许多概念，如依赖注入、AOP、MVC模式等，需要时间去理解和掌握。
+2. 配置复杂性：虽然现代Spring MVC通过注解大大减少了XML配置，但在复杂的项目中，配置管理仍可能变得复杂，特别是当需要精细控制框架行为时。
+3. 过度设计：对于小型项目，Spring MVC的灵活性和功能丰富性可能显得有些过度，导致项目结构过于复杂，增加了不必要的开销。
+4. 启动和运行时资源消耗：Spring应用程序，特别是配置较多时，启动时间可能较长，内存占用也可能较大。
+5. 视图与控制器的紧密耦合：尽管鼓励分离，但在实践中，视图和控制器之间的关系有时可能过于紧密，尤其是在没有适当设计的情况下。
+6. 过度依赖框架：高度依赖Spring框架的特性可能导致代码在没有Spring环境时难以重用或测试。
+7. 性能考虑：虽然Spring MVC本身是高效的，但在处理大量并发请求时，如果没有恰当的配置和优化，性能可能会受到影响。
+8. 版本兼容性：随着Spring版本的更新，有时需要迁移旧代码，这可能涉及到不兼容的更改和升级成本。
+9. 调试和异常处理：在复杂的应用场景下，异常处理和调试可能需要更多技巧，特别是当涉及到Spring的自动配置和AOP时。
+10. 社区资源的多样性：尽管Spring社区庞大，但对于特定问题的解决方案可能分散，新手可能需要时间找到最适合的解答。
 
-### DispatcherServlet接口
-Spring提供的前端控制器，所有的请求都有经过它来统一分发。在DispatcherServlet将请求分发给Spring Controller之前，需要借助于Spring提供的HandlerMapping定位到具体的Controller。
+了解这些缺点有助于在项目选型时做出更合适的选择，并在使用Spring MVC时采取措施来克服这些挑战。
 
-DispatcherServlet是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。
-1. 截获符合特定格式的URL请求。
-2. 初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。
-3. 初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。
+## Spring MVC的控制器是不是单例模式 {id="Single_model"}
 
-### HandlerMapping接口
-能够完成客户请求到Controller映射。
+Spring MVC的控制器默认是单例模式。这意味着在整个应用程序的生命周期中，Spring容器只会创建每个控制器类的一个实例。这种设计决策主要是出于性能考虑，因为它减少了实例化控制器对象的开销，尤其是在高并发环境下，可以更高效地复用同一个控制器实例处理多个请求。
 
-HandlerMapping:处理映射器，为用户发送的请求找到合适的Handler Adapter。
-使用 mvc:annotation-driven 做配置，spring mvc 会默认使用 DefaultAnnotationHandlerMapping 和 AnnotationMethodHandlerAdapter
-### Controller接口
-Controller将处理用户请求。一旦Controller处理完用户请求，则返回ModelAndView对象给DispatcherServlet前端控制器，ModelAndView中包含了模型（Model）和视图（View）。
+然而，单例模式在控制器中引入了线程安全和状态管理的挑战。如果控制器中存在非静态成员变量并且这些变量的状态在请求间需要改变，就可能导致线程安全问题，因为多个线程可能同时访问这些共享状态。为了解决这些问题，开发者通常会避免在控制器中保持请求之外的业务状态，或者使用线程安全的类来管理状态，或者在必要时通过Spring的scope配置将控制器设置为原型模式（@Scope("prototype")），但这通常不是推荐的做法，因为会增加资源消耗和管理复杂性。
 
-从宏观角度考虑，DispatcherServlet是整个Web应用的控制器；从微观考虑，Controller是单个Http请求处理过程中的控制器，而ModelAndView是Http请求过程中返回的模型（Model）和视图（View）。
-### ViewResolver接口
-Spring提供的视图解析器（ViewResolver）在Web应用中查找View对象，从而将相应结果返回给客户。
+## Spring MVC是 Spring 框架的关系
+Spring MVC 是 Spring 框架的一个子模块，专注于构建Web应用的MVC部分。它与Spring核心框架紧密结合，利用Spring的依赖注入等特性来管理MVC组件。Spring提供了基础的IoC和AOP等功能，而Spring MVC扩展了这些能力，用于处理HTTP请求，实现请求-响应的生命周期管理，包括路由控制、模型数据处理、视图渲染等。在实际开发中，Spring MVC依赖于Spring容器来管理控制器和其他Web组件，形成一个完整的Web应用开发解决方案。简单来说，Spring是全面的应用框架，Spring MVC是其中专门针对Web应用开发的模块。
 
-## springMVC和spring的关系
-springMVC位于spring web端的一个框架，是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦。
 
-附：基于请求驱动指的就是使用请求-响应模型。从名字上就可以窥探出，Spring>SpringMVC，那么事实上，spring和SpringMVC是一种父子关系。SpringMVC是spring扩展出的一个应用于web端的框架。在这里需要注意的一点，就是到底什么是父子容器关系：    
-spring主要的作用是黏合其他模块组件，进行统一管理，springmvc则主要是负责web端。那么，我们都知道，我们在应用spring的时候，可以使用注入。这个时候，如果我们的web端是用的SpringMVC，这个时候，controller理论上是通过SpringMVC去注入，但是，使用spring注入，同样是可行的。同理，service等层，使用SpringMVC配置的统一扫描装配也是可以的。所以，如果说只是为了使用spring的依赖注入，是大可不必将springMVC和spring同时使用的。他们完全可以分开！   
-但是，尽管SpringMVC和spring都可以进行自动装配扫描，值得注意的是：    
-spring（父容器）并不能直接访问SpringMVC（子容器）所注入的对象，但是SpringMVC却可以访问到spring装载的对象。所以，在配置自动装配的时候，应该注意到这一点。
+## Spring MVC的运行流程 {id="spring-mvc_1"}
 
-## springMVC、struts1和struts2的区别
+Spring MVC 的运行流程大致如下：
+1. 请求开始：用户通过HTTP请求访问应用，请求包含URL和参数。
+2. DispatcherServlet：请求首先到达Spring MVC的前端控制器DispatcherServlet，它负责调度请求。
+3. 请求映射：DispatcherServlet使用HandlerMapping找到匹配的控制器方法，基于@RequestMapping等注解。
+4. 处理器适配器：DispatcherServlet通过HandlerAdapter调用控制器方法，适配器知道如何处理不同类型的控制器。
+5. 执行业务逻辑：控制器方法执行，处理请求，可能包括数据处理、服务调用等。
+6. 模型和视图：控制器返回ModelAndView或直接返回视图名称，包含模型数据和视图信息。
+7. 视图解析：ViewResolver根据视图名称解析出具体的视图实现，如JSP、Thymeleaf等。
+8. 渲染视图：视图使用模型数据生成HTML响应。
+9. 响应用户：DispatcherServlet将HTML响应发送回客户端，结束请求。
+
+在整个过程中，Spring MVC还支持拦截器和异常处理，提供更灵活的控制和错误处理。
+
+## Spring MVC中的核心接口 {id="interface"}
+Spring MVC 中的核心接口主要包括：
+1. DispatcherServlet：作为前端控制器，负责接收请求，调度请求处理流程。
+2. HandlerMapping：映射请求到相应的处理器（Controller 方法）。
+3. Controller：通常通过@Controller注解标记的类，处理请求并返回响应。
+4. HandlerAdapter：适配器接口，调用控制器方法并处理其返回结果。
+5. ViewResolver：解析逻辑视图名到实际视图对象，如JSP或Thymeleaf模板。
+6. HandlerInterceptor：拦截器接口，允许在请求处理前后执行额外逻辑，如认证、日志记录等。
+7. ModelAndView：封装模型数据和视图信息，用于返回给DispatcherServlet。
+
+这些组件协同工作，形成了一条从请求接收、业务处理到响应生成的完整处理链路，简化了Web应用的开发和维护。
+
+## SpringMVC有哪些注解？ {id="annotation"}
+
+Spring MVC 提供了一系列注解，用于简化控制器、请求映射、数据绑定和其他功能的配置。以下是一些核心的注解：
+1. @Controller: 用于标记一个类作为Spring MVC的控制器，表明该类将处理HTTP请求。
+2. @RequestMapping: 用于将HTTP请求映射到控制器方法，可以注解在类级别或方法级别，指定URL模式。
+3. @GetMapping / @PostMapping / @PutMapping / @DeleteMapping: 这些是@RequestMapping的特殊形式，分别对应HTTP的GET、POST、PUT和DELETE请求。
+4. @RequestParam: 将请求参数绑定到方法参数，例如@RequestParam("paramName") String paramName。
+5. @PathVariable: 用于获取URL模板变量的值，如@PathVariable("id") Long id。
+6. @RequestBody: 用于将HTTP请求体中的JSON或XML数据转换为Java对象。
+7. @ResponseBody: 表示方法的返回值将直接写入HTTP响应体，通常用于处理JSON或XML响应。
+8. @ModelAttribute: 用于从请求中获取数据并将其绑定到模型对象，或者将模型对象添加到模型视图中。
+9. @ExceptionHandler: 注解在方法上，用于捕获和处理特定的异常。
+10. @InitBinder: 可以用于初始化数据绑定的行为，例如设置日期格式或排除某些字段。
+11. @Autowired / @Qualifier: Spring的依赖注入注解，用于自动装配依赖的bean，@Qualifier用于指定具体哪个bean。
+12. @ControllerAdvice: 提供全局异常处理和数据绑定建议，可以作用于整个应用的控制器。
+
+## @RequestBody注解
+
+POST请求通常使用@RequestBody来接收请求体中的数据，尤其是在发送JSON、XML等非表单格式的数据时。这是因为在RESTful设计原则中，POST请求常用于创建资源，而资源的具体内容通常位于请求体中。使用@RequestBody可以将请求体的内容直接映射到方法的参数上，便于处理复杂的数据结构。
+
+@RequestBody注解确实通常用于接收JSON对象或数组，而不是简单的基础类型，如String。在您的示例中，您尝试将@RequestBody应用于List&lt;String&gt;，这在大多数情况下是可行的，前提是在请求体中，前端发送的是一个JSON数组，例如：
+
+```json
+[
+ "id1",
+ "id2",
+ "id3"
+]
+```
+
+这些注解极大地简化了Spring MVC应用的配置，让开发者可以更专注于业务逻辑而不是底层的HTTP处理细节。
+
+## Spring MVC如何处理日期类型？ {id="date_type"}
+Spring MVC在处理日期类型时，通过注解、全局配置或自定义转换器实现灵活的转换机制。你可以使用@DateTimeFormat直接在参数上指定格式，实现局部日期时间格式化。对于全局设置，可以通过配置文件指定默认日期格式。此外，通过实现Formatter或Converter接口，可以定制化日期转换逻辑，适应复杂需求。这些方式确保了日期数据在HTTP请求与后端处理间的准确无误转换。
+
+## spring MVC的传参方式 {id="param_type"}
+Spring MVC支持多种参数传递方式，包括：
+1. 基本类型和String参数：直接声明在方法参数中，Spring MVC会自动绑定请求参数。
+2. @RequestParam：用于指定请求参数名和是否必需，支持默认值。
+3. 对象绑定：通过Java Bean类映射请求参数，自动填充对象属性。
+4. @ModelAttribute：用于模型数据的绑定和存储，适用于多参数或预加载数据。
+5. Path Variables：从URL模板中提取变量，如/user/{userId}。
+6. 数组和集合：通过[]接收数组或List类型参数。
+7. HttpServletRequest和HttpSession：直接操作请求或会话对象获取所有参数。
+8. JSON数据绑定：使用@RequestBody接收JSON格式的请求体，自动转换为对象。
+
+这些方式覆盖了各种场景，帮助开发者灵活处理HTTP请求中的参数。
+
+
+## Spring MVC、Struts 1 和 Struts 2的区别
 1. springMVC单例 非线程安全  
     struts1单例 非线程安全    
     struts2线程安全对每个请求都产生一个实例
@@ -69,87 +176,6 @@ SpringMvc采用request来解析请求内容，然后由其内部的getParameter�
 springMvc是基于方法的通过方法里的参数来接受前台传过来的值，默认使用的是单例线程不安全，它是通过servlet实现的请求转发和初始化，开发效率高于Struts2.dispatherServlet是前端控制器，springMvc中的Interceptor是通过HandlerInterceptor来实现的。                
 Struts2是基于类的通过声明全局的私有属性并生成get、set方法来接收前台传过来的值，默认是使用多例线程安全，Struts2是通过filter实现的请求转发和初步处理。Struts2有自己的拦截机制，配置在Struts.xml中，拦截Struts的action请求并处理，struts2核心控制器是FilterDispatcher 旧版本，StrutsPrepareAndExecuteFilter 新版本。         
 
-
-
-## springMVC的运行原理
-
-整个处理过程从一个HTTP请求开始的
-1. Tomcat在启动时加载解析web.xml,找到spring  mvc的前端总控制器DispatcherServlet,并且通过DispatcherServlet来加载相关的配置文件信息。
-2. DispatcherServlet接收到客户端请求，找到对应HandlerMapping，根据映射规则，找到对应的处理器（Handler）。
-3. 调用相应处理器中的处理方法，处理该请求后，会返回一个ModelAndView。
-4. DispatcherServlet根据得到的ModelAndView中的视图对象，找到一个合适的ViewResolver（视图解析器），根据视图解析器的配置，DispatcherServlet将要显示的数据传给对应的视图，最后显示给用户。
-
----
-
-1. 用户发送请求至前端控制器 DispatcherServlet    
-2. DispatcherServlet 收到请求调用 HandlerMapping 处理器映射器。   
-3. 处理器映射器找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成) 一并返回给 DispatcherServlet。    					 			 	 
-4. DispatcherServlet 调用 HandlerAdapter 处理器适配器   
-5. HandlerAdapter 经过适配调用具体的处理器(Controller，也叫后端控制器)。  
-6. Controller 执行完成返回 ModelAndView   
-7. HandlerAdapter 将 controller 执行结果 ModelAndView 返回给 DispatcherServlet   
-8. DispatcherServlet 将 ModelAndView 传给 ViewReslover 视图解析器   
-9. ViewReslover 解析后返回具体 View    
-10. DispatcherServlet 根据 View 进行渲染视图（即将模型数据填充至视图中）。   
-11. DispatcherServlet 响应用户  
-
-## springMVC的工作流程和原理是什么 {id="springmvc_1"}
-<img src="mvc_process_principle.jpeg" alt=""/>
-
-
-
-## springMVC的优点 {id="springmvc_2"}
-1. 它是基于组件技术的.全部的应用对象,无论控制器和视图,还是业务对象之类的都是java组件.并且和Spring提供的其他基础结构紧密集成.
-2. 不依赖于Servlet API(目标虽是如此,但是在实现的时候确实是依赖于Servlet的)
-3. 可以任意使用各种视图技术,而不仅仅局限于JSP
-4. 支持各种请求资源的映射策略
-5. 它应是易于扩展的  
-
-## 谈谈你对springMVC框架的看法 {id="springmvc_3"}
-我最近面试过程中很少有问道框架这方面的，说实话，这框架这块如果是正常使用的话还真没啥说的，springMVC就是一个控制层框架，整体使用过程中也没遇到过什么问题，在我的理解当中也就比struts2框架节省内存，在与spring的整合过程中不需要引入额外的jar包，没有出现过安全漏洞。
-
-
-
-## SpringMVC有哪些注解 {id="springmvc_4"}
-
-1. @Controller，在SpringMVC 中，控制器Controller 负责处理由DispatcherServlet 分发的请求
-2. @RequestMapping，RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径
-3. @Resource和@Autowired  ，@Resource和@Autowired都是做bean的注入时使用，其实@Resource并不是Spring的注解，
-4. @requestParam，@requestParam主要用于在SpringMVC后台控制层获取参数，类似一种是request.getParameter("name")，它有三个常用参数：defaultValue = "0", required = false, value = "isApp"；defaultValue 表示设置默认值，required 铜过boolean设置是否是必须要传入的参数，value 值表示接受的传入的参数类型。
-5. @ResponseBody作用： 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区
-6. @Component  相当于通用的注解，当不知道一些类归到哪个层时使用，但是不建议
-7. @Repository 用于注解dao层，在daoImpl类上面注解
-8. @ModelAttribute和 @SessionAttributes代表的是：该Controller的所有方法在调用前，先执行此@ModelAttribute方法，可用于注解和方法参数中，可以把这个@ModelAttribute特性，应用在BaseController当中，所有的Controller继承BaseController，即可实现在调用Controller时，先执行@ModelAttribute方法
-9. @PathVariable 用于将请求URL中的模板变量映射到功能处理方法的参数上，即取出uri模板中的变量作为参数
-
----
-
-1. @RequestMapping声明方法的具体访问路径，@RequestMapping放在类上时相当于struts2的@nameSpace，就是在具体访问路径之前再加一层目录。
-2. @RequestParam相当于request.getAttribute()方法，从request作用域对象中获取对应的参数值。
-3. @ResponseBody 把返回的参数转换成xml或者json格式，主要与ajax请求结合使用。
-
---- 
-
-1. @Controller 控制器定义 ,和Struts1一样，Spring的Controller是Singleton的。这就意味着会被多个请求线程共享。因此，我们将控制器设计成无状态类。
-2. @RequestMapping 在类前面定义，则将url和类绑定。在方法前面定义，则将url和类的方法绑定
-3. @RequestParam 一般用于将指定的请求参数付给方法中形参
-4. @SessionAttributes 将ModelMap中指定的属性放到session中
-5. @ModelAttribute 这个注解可以跟@SessionAttributes配合在一起用。可以将ModelMap中属性的值通过该注解自动赋给指定变量。
-6. @ResponseBody 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。
-7. @Autowired 注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用
-8. @Resource 默认按照ByName自动注入
-
----
-
-SpringMVC的注解有很多，常用的主要有@Controller声明此类是一个控制层类，后续dispatchServlet在纷发请求时就可以请求到该类。 @RequestMapping声明方法的具体访问路径，@Controller的注解需要与 @RequestMapping结合使用才能访问到控制层的具体方法，@RequestMapping放在类上时相当于struts2的@nameSpace，就是在具体访问路径之前再加一层目录，@requestParam相当于request.getAttribute()方法，从request作用域对象中获取对应的参数值，、@PathVariable解析@RequestMapping路径中的变量参数，需要与@RequestMapping结合使用，整体使用感觉和@requestParam差别不大。、@ResponseBody 把返回的参数转换成xml或者json格式，主要与ajax请求结合使用。
-
-
-## MVC设计模式/Web项目的三层架构
-1. M model 模型层   
-2. V view 视图层    
-3. C controller 控制层  
-
-是一种将模型层、视图层与控制层的业务进行分离的设计模式，提高了代码的可读性与重用性。分离视图层和业务逻辑层也使得WEB应用更易于维护和修改。
 
 
 ## springMVC为什么可以是单例的，而struts2必须是多例的 {id="springmvc-struts2_1"}
@@ -182,124 +208,4 @@ Struts2多例原因很简单，Struts2最常用值栈来在action与页面中传
     
 > [单例和多例的区别](https://www.cnblogs.com/zdf159/p/7595382.html)  
 
-
-## SpringMVC的控制器是不是单例模式，如果是有什么问题,怎么解决 {id="springmvc_5"}
-是。单例如果有非静态成员变量保存状态会有线程安全问题。      
-``解决办法1：``不要有成员变量，都是方法。   
-``解决办法2：``@Scope(“prototype”)      
-
-
-## springMVC的传参方式，批量接收的写法 {id="springmvc_6"}
-
-```java
-/**
- *第一种传值方式
- * @param id
- * @return http://localhost:8080/UserApplication/test2/100
- */
-@RequestMapping(value = "/test2/{id}", method = RequestMethod.GET)
-public String test2(@PathVariable("id") Integer id) {
-    return "id:" + id;
-}
-/**
- * 第二种传值方式
- * @param id
- * @return http://localhost:8080/UserApplication/test3?id=100
- * 设置默认值 这个是传参
- * 当他为false 时，使用这个注解可以不传这个参数 true时必须传 required默认值是true
- */
-@RequestMapping(value = "/test3", method = RequestMethod.GET)
-public String test3(@RequestParam(value = "id", required = false, defaultValue = "0") Integer id) {
-    return "id:" + id;
-}
-```
-
-## springMVC 对日期的处理，和附件的操作 {id="springmvc_7"}
-日期的处理：在做web开发的时候，页面传入的都是String类型，SpringMVC可以对一些基本的类型进行转换，但是对于日期类的转换可能就需要我们配
-
-1. 如果查询类使我们自己写，那么在属性前面加上@DateTimeFormat(pattern = "yyyy-MM-dd")，即可将String转换为Date类型，如下	
-
-```java
-@DateTimeFormat(pattern = "yyyy-MM-dd")
-private Date createTime;
-```
-1. 如果我们只负责web层的开发，就需要在controller中加入数据绑定：
-
-```java
-@InitBinder
-public void initBinder(WebDataBinder binder) { 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
-    dateFormat.setLenient(false); 
-    //true:允许输入空值，false:不能为空值
-    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true)); 
-}
-```
-
-1. 可以在系统中加入一个全局类型转换器
-
-
-```xml
-<mvc:annotation-driven>
-    <bean  id="conversionnService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="converters">
-            <list>
-                <bean class="com.doje.XXX.web.DateConverter" />
-            </list>
-        </property>
-    </bean>
-<mvc:annotation-driven conversion-service="conversionService" />
-```
-
-```java
-public class DateConverter implements Converter<String, Date> { 
-    @Override 
-    public Date convert(String source) { 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
-        dateFormat.setLenient(false); 
-        try { 
-            return dateFormat.parse(source); 
-        } catch (ParseException e) { 
-            e.printStackTrace(); 
-        } 
-    return null; 
-}
-```
-1. 如果将日期类型转换为String在页面上显示，需要配合一些前端的技巧进行处理。
-2. SpringMVC使用@ResponseBody返回json时，日期格式默认显示为时间戳。
-```xml
-<mvc:annotation-driven> 
-    <mvc:message-converters> 
-        <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> 
-            <property name="objectMapper" ref="customObjectMapper"></property> 
-        </bean> 
-    </mvc:message-converters> 
-</mvc:annotation-driven>
-```
-
-```java
-@Component("customObjectMapper") 
-public class CustomObjectMapper extends ObjectMapper { 
-    public CustomObjectMapper() { 
-        CustomSerializerFactory factory = new CustomSerializerFactory(); 
-        factory.addGenericMapping(Date.class, new JsonSerializer<Date>() { 
-            @Override 
-            public void serialize(Date value,JsonGenerator jsonGenerator,SerializerProvider provider) throws IOException, JsonProcessingException { 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-                jsonGenerator.writeString(sdf.format(value)); 
-            } 
-        }); 
-        this.setSerializerFactory(factory); 
-    } 
-}
-```
-
-1. date类型转换为json字符串时，返回的是long time值，如果需要返回指定的日期的类型的get方法上写上@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8") ，即可将json返回的对象为指定的类型。
-
-```java
-@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") 
-@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8") 
-public Date getCreateTime() { 
-    return this.createTime; 
-}
-```
 

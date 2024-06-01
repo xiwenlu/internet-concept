@@ -1,5 +1,6 @@
 # spring注解  
 
+
 ## annotation之@Autowired、@Inject、@Resource三者区别
 1. @Autowired是spring自带的，@Inject是JSR330规范实现的，@Resource是JSR250规范实现的，需要导入不同的包
 2. @Autowired、@Inject用法基本一样，不同的是@Autowired有一个request属性
@@ -10,6 +11,7 @@
 使用multipart/form-data编码类型向后端同时传文件和JSON等其他类型数据时会用到@RequestPart注解，这里粗略的说一下两者的区别（语言上描述不够严谨）
 1. @RequestPart注解的MultipartFile类型参数使用MultipartResolver关联，其它的类型的参数使用HttpMessageConverter（类似@RequestBody）
 2. @RequestParam注解的非String或MultipartFile/Part类型，转换器需要一个注册的Converter 或 PropertyEditor
+
 
 
 ## spring的常见注解 {id="spring_1"}
